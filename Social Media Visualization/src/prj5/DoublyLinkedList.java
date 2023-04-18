@@ -68,7 +68,7 @@ public class DoublyLinkedList<T> {
      *            the entry to add to the list
      */
     public void add(T entry) {
-        this.add(0, entry);
+        this.add(numberOfEntries, entry);
     }
 
 
@@ -81,7 +81,7 @@ public class DoublyLinkedList<T> {
      *            the entry to add to the list
      */
     public void add(int pos, T entry) {
-        if (pos >= numberOfEntries || pos < 0) {
+        if (pos > numberOfEntries || pos < 0) {
             throw new IndexOutOfBoundsException();
         }
         Node<T> curr = firstNode;
@@ -338,12 +338,13 @@ public class DoublyLinkedList<T> {
      * @param <T>
      *            The type of data to be stored
      */
-    private class Node<T> {
+    public class Node<T> {
 
         private Node<T> next;
         private Node<T> prev;
         private T data;
 
+        @SuppressWarnings("unused")
         Node(T data) {
             this(data, null, null);
         }
@@ -374,10 +375,6 @@ public class DoublyLinkedList<T> {
         public void setPrev(Node<T> prev) {
             this.prev = prev;
         }
-
-// public void setData(T data) {
-// this.data = data;
-// }
 
 
         public T getData() {
