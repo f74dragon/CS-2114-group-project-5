@@ -60,7 +60,7 @@ public class Channel {
      * @return the Month object for the given month name
      */
     public Month getMonth(String monthName) {
-        for (Month month : months) {
+        for (Month month : months.toArray()) {
             if (month.getMonth().equals(monthName)) {
                 return month;
             }

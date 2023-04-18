@@ -1,14 +1,16 @@
 package prj5;
 
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
- * A class representing a doubly linked list data structure.
- *
- *@author Arian Assadzadeh, Kevin, Jon
- *
- *@version 04-18-2023
- *
+ * A basic double linked list class with sentinel nodes
+ * 
+ * @author Jon Church (Jrchurch02)
+ * @version 2023.04.17
  * @param <T>
- *            the type of data stored in the linked list
+ *            The type of data to be stored
  */
 public class DoublyLinkedList<T> {
 
@@ -17,110 +19,158 @@ public class DoublyLinkedList<T> {
     private int numberOfEntries;
 
     /**
-     * Constructs an empty DoublyLinkedList object.
+     * Generic constructor for the class.
+     * Creates sentinel nodes at the front and back
+     * Sets the numberOfEntries to 0
      */
     public DoublyLinkedList() {
-        this.firstNode = null;
-        this.lastNode = null;
-        this.numberOfEntries = 0;
-    }
-
-
-    /**
-     * Returns the first node in the linked list.
-     *
-     * @return the first node in the linked list
-     */
-    public Node<T> getFirstNode() {
-        return firstNode;
-    }
-
-
-    /**
-     * Returns the last node in the linked list.
-     *
-     * @return the last node in the linked list
-     */
-    public Node<T> getLastNode() {
-        return lastNode;
-    }
-
-
-    /**
-     * Adds a new node with the given data to the end of the linked list.
-     *
-     * @param data
-     *            the data to be added to the linked list
-     */
-    public void add(T data) {
-        add(numberOfEntries, data);
-    }
-
-
-    /**
-     * Adds a new node with the given data at the specified index in the linked
-     * list.
-     *
-     * @param index
-     *            the index where the new node should be added
-     * @param data
-     *            the data to be added to the linked list
-     * @throws IndexOutOfBoundsException
-     *             if the given index is out of range
-     */
-    public void add(int index, T data) {
-        if (index < 0 || index > numberOfEntries) {
-            throw new IndexOutOfBoundsException("Invalid index");
-        }
-
-    }
-
-
-    /**
-     * Removes all nodes from the linked list.
-     */
-    public void clear() {
-        firstNode = null;
-        lastNode = null;
+        firstNode = new Node<T>(null, null, null);
+        lastNode = new Node<T>(null, firstNode, null);
+        firstNode.setNext(lastNode);
         numberOfEntries = 0;
     }
 
 
     /**
-     * Removes the first occurrence of the given data from the linked list, if
-     * it exists.
-     *
-     * @param data
-     *            the data to be removed from the linked list
-     * @return true if the data was removed, false otherwise
+     * gets the first node if there is one, otherwise returns
+     * null
+     * 
+     * @return the first node
      */
-    public boolean remove(T data) {
-
-    }
-
-
-    /**
-     * Returns the data stored in the node at the specified index in the linked
-     * list.
-     *
-     * @param index
-     *            the index of the node whose data should be retrieved
-     * @return the data stored in the node at the specified index
-     * @throws IndexOutOfBoundsException
-     *             if the given index is out of range
-     */
-    public T getEntry(int index) {
-        if (index < 0 || index >= numberOfEntries) {
-            throw new IndexOutOfBoundsException("Invalid index");
+    public Node<T> getFirstNode() {
+        Node<T> out = firstNode.getNext();
+        if (out.getData() == null) {
+            return null;
         }
-
+        return out;
     }
 
 
     /**
-     * Returns true if the linked list is empty, false otherwise.
-     *
-     * @return true if the linked list is empty, false otherwise
+     * gets the last node if there is one, otherwise returns
+     * null
+     * 
+     * @return the last node
+     */
+    public Node<T> getLastNode() {
+        Node<T> out = lastNode.getPrev();
+        if (out.getData() == null) {
+            return null;
+        }
+        return out;
+    }
+
+
+    /**
+     * adds an entry in the first place in the list
+     * 
+     * @param entry
+     *            the entry to add to the list
+     */
+    public void add(T entry) {
+        this.add(0, entry);
+    }
+
+
+    /**
+     * adds an entry to a given place in the list
+     * 
+     * @param pos
+     *            the 0 based index to put the entry at
+     * @param entry
+     *            the entry to add to the list
+     */
+    public void add(int pos, T entry) {
+        if (pos >= numberOfEntries || pos < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<T> curr = firstNode;
+        for (int i = 0; i < pos; i++) {
+            curr = curr.getNext();
+        }
+        Node<T> entryNode = new Node<T>(entry, curr, curr.getNext());
+        curr.getNext().setPrev(entryNode);
+        curr.setNext(entryNode);
+        numberOfEntries++;
+    }
+
+
+    /**
+     * clears the list by
+     * removing every node from the list and sets
+     * numberOfEntries to 0
+     */
+    public void clear() {
+        firstNode.setNext(lastNode);
+        lastNode.setPrev(firstNode);
+        numberOfEntries = 0;
+    }
+
+
+    /**
+     * 
+     * @param pos
+     *            the 0 besed index of the position to remove
+     * @return the data of the removed node
+     */
+    public T remove(int pos) {
+        if (pos >= numberOfEntries || pos < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<T> curr = firstNode.getNext();
+        for (int i = 0; i < pos; i++) {
+            curr = curr.getNext();
+        }
+        curr.getNext().setPrev(curr.getPrev());
+        curr.getPrev().setNext(curr.getNext());
+        numberOfEntries--;
+        return curr.getData();
+    }
+
+
+    /**
+     * finds the first entry with the given data and removes.
+     * 
+     * @param entry
+     *            the entry to remove
+     * @return true if an entry is removed, false otherwise
+     */
+    public boolean remove(T entry) {
+        Node<T> curr = firstNode.getNext();
+        while (curr.getData() != null) {
+            if (curr.getData() == entry) {
+                curr.getNext().setPrev(curr.getPrev());
+                curr.getPrev().setNext(curr.getNext());
+                return true;
+            }
+            numberOfEntries--;
+            curr = curr.getNext();
+        }
+        return false;
+    }
+
+
+    /**
+     * returns the data of the entry at the given position
+     * 
+     * @param pos
+     *            the position of the entry to get
+     * @return the data from the entry
+     */
+    public T getEntry(int pos) {
+        if (pos >= numberOfEntries || pos < 0) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<T> curr = firstNode.getNext();
+        for (int i = 0; i < pos; i++) {
+            curr = curr.getNext();
+        }
+        return curr.getData();
+    }
+
+
+    /**
+     * @return true if the list is empty, false otherwise
      */
     public boolean isEmpty() {
         return numberOfEntries == 0;
@@ -128,9 +178,7 @@ public class DoublyLinkedList<T> {
 
 
     /**
-     * Returns the number of nodes in the linked list.
-     *
-     * @return the number of nodes in the linked list
+     * @return the number of entries in the list
      */
     public int getLength() {
         return numberOfEntries;
@@ -138,156 +186,204 @@ public class DoublyLinkedList<T> {
 
 
     /**
-     * Returns an array of the data stored in the nodes of the linked list.
-     *
-     * @return an array of the data stored in the nodes of the linked list
+     * generates an array of the data from the list
+     * 
+     * @return an array representation of the list
      */
+    @SuppressWarnings("unchecked")
     public T[] toArray() {
-        @SuppressWarnings("unchecked")
-        T[] result = (T[])new Object[numberOfEntries];
-
-        Node<T> currentNode = firstNode;
-        int index = 0;
-
-        while (currentNode != null) {
-            result[index] = currentNode.getData();
-            currentNode = currentNode.getNext();
-            index++;
+        if (this.isEmpty()) {
+            return null;
         }
-
-        return result;
+        T[] out = (T[])new Object[numberOfEntries];
+        IteratorDLL<T> iter = iterator();
+        int i = 0;
+        while (iter.hasNext()) {
+            out[i++] = iter.next();
+        }
+        return out;
     }
 
 
     /**
-     * Replaces the data in the node at the specified index with the given data.
-     *
-     * @param index
-     *            the index of the node whose data should be replaced
-     * @param data
-     *            the data to replace the existing data
-     * @throws IndexOutOfBoundsException
-     *             if the given index is out of range
+     * replaces the data in a node of a given position
+     * with given data
+     * 
+     * @param pos
+     *            the 0 based position to replace
+     * @param entry
+     *            the entry to replace with
      */
-    public void replace(int index, T data) {
-        if (index < 0 || index >= numberOfEntries) {
-            throw new IndexOutOfBoundsException("Invalid index");
+    public void replace(int pos, T entry) {
+        if (pos > numberOfEntries || pos < 0) {
+            throw new IndexOutOfBoundsException();
         }
-
+        // TODO implement this
     }
 
 
     /**
-     * Returns true if the linked list contains the given data, false otherwise.
-     *
-     * @param data
-     *            the data to search for in the linked list
-     * @return true if the linked list contains the given data, false otherwise
+     * checks if specific data is contained within the list
+     * 
+     * @param check
+     *            the data to check for
+     * @return true if the list has that data, false otherwise
      */
-    public boolean contains(T data) {
-        Node<T> currentNode = firstNode;
-
-        while (currentNode != null) {
-            if (currentNode.getData().equals(data)) {
+    public boolean contains(T check) {
+        Node<T> curr = firstNode.getNext();
+        while (curr.getData() != null) {
+            if (curr.getData() == check) {
                 return true;
             }
-
-            currentNode = currentNode.getNext();
+            curr = curr.getNext();
         }
-
         return false;
     }
 
+
     /**
-     * A class representing a node in a doubly linked list data structure.
+     * creates and returns an iterator for the list
+     * 
+     * @return an iterator object at the start of the list
+     */
+    public IteratorDLL<T> iterator() {
+        return new IteratorDLL<T>();
+    }
+
+
+    /**
+     * sorts the list based on a specified comparator
+     * 
+     * @param comp
+     *            the comparator to sort by
+     */
+    public void sort(Comparator<T> comp) {
+        // TODO create this
+    }
+
+    /**
+     * iterator class for the
+     * 
+     * @author Jon Church (Jrchurch02)
      *
      * @param <T>
-     *            the type of data stored in the node
+     *            The type of data to be stored
      */
-    public class Node<T> {
+    @SuppressWarnings("hiding")
+    private class IteratorDLL<T> implements Iterator<T> {
+
+        private Node<T> next;
+        private boolean calledNext;
+
+        @SuppressWarnings("unchecked")
+        public IteratorDLL() {
+            next = (Node<T>)firstNode;
+            calledNext = false;
+        }
+
+
+        /**
+         * checks if the iterator hasa next node
+         * 
+         * @return true if there is another node, false otherwise
+         */
+        public boolean hasNext() {
+            return next.getNext().getData() != null;
+        }
+
+
+        /**
+         * removes the next node and sets the next node to be the
+         * one after the removed node
+         */
+        public void remove() {
+            if (calledNext) {
+                Node<T> tempNext = next.getNext();
+                next.getNext().setPrev(next.getPrev());
+                next.getPrev().setNext(next.getNext());
+                next = tempNext;
+            }
+            calledNext = false;
+        }
+
+
+        /**
+         * moves the iterator forward one node
+         * 
+         * @return the data of the node
+         */
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            next = next.getNext();
+            if (hasNext()) {
+                calledNext = true;
+            }
+            else {
+                calledNext = false;
+            }
+            return next.getData();
+        }
+
+    }
+
+
+    /**
+     * A node class to hold the data and link the chain for
+     * the DoubleLinkedList class
+     * 
+     * @author Jon Church (Jrchurch02)
+     * @version 2023.04.17
+     * @param <T>
+     *            The type of data to be stored
+     */
+    private class Node<T> {
+
         private Node<T> next;
         private Node<T> prev;
         private T data;
 
-        /**
-         * Constructs a new Node object with the given data.
-         *
-         * @param data
-         *            the data to be stored in the node
-         */
-        public Node(T data) {
+        Node(T data) {
             this(data, null, null);
         }
 
 
-        /**
-         * Constructs a new Node object with the given data, next node, and
-         * previous node.
-         *
-         * @param data
-         *            the data to be stored in the node
-         * @param next
-         *            the next node in the linked list
-         * @param prev
-         *            the previous node in the linked list
-         */
-        public Node(T data, Node<T> next, Node<T> prev) {
+        Node(T data, Node<T> prev, Node<T> next) {
             this.data = data;
-            this.next = next;
             this.prev = prev;
-        }
-
-
-        /**
-         * Sets the next node in the linked list.
-         *
-         * @param next
-         *            the next node in the linked list
-         */
-        public void setNext(Node<T> next) {
             this.next = next;
         }
 
 
-        /**
-         * Sets the previous node in the linked list.
-         *
-         * @param prev
-         *            the previous node in the linked list
-         */
-        public void setPrev(Node<T> prev) {
-            this.prev = prev;
-        }
-
-
-        /**
-         * Returns the next node in the linked list.
-         *
-         * @return the next node in the linked list
-         */
         public Node<T> getNext() {
             return next;
         }
 
 
-        /**
-         * Returns the previous node in the linked list.
-         *
-         * @return the previous node in the linked list
-         */
         public Node<T> getPrev() {
             return prev;
         }
 
 
-        /**
-         * Returns the data stored in the node.
-         *
-         * @return the data stored in the node
-         */
+        public void setNext(Node<T> next) {
+            this.next = next;
+        }
+
+
+        public void setPrev(Node<T> prev) {
+            this.prev = prev;
+        }
+
+// public void setData(T data) {
+// this.data = data;
+// }
+
+
         public T getData() {
             return data;
         }
+
     }
 
 }
