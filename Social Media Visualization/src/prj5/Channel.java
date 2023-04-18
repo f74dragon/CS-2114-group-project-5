@@ -48,7 +48,7 @@ public class Channel {
      *            the month to be added
      */
     public void addMonth(Month month) {
-
+        months.add(month);
     }
 
 
@@ -117,7 +117,7 @@ public class Channel {
      *         months
      */
     public Month[] toArray() {
-
+        return months.toArray();
     }
 
 
@@ -127,16 +127,21 @@ public class Channel {
      * @param quarter
      *            the quarter (1, 2, 3, or 4) to retrieve
      * @return the Month object for the given quarter
+     * @throws EmptyListException 
      */
-    public Month getQuarters(int quarter) {
+    public Month getQuarters(int quarter) throws EmptyListException {
         switch (quarter) {
             case 1:
+                calQuarter(quarter);
                 return q1;
             case 2:
+                calQuarter(quarter);
                 return q2;
             case 3:
+                calQuarter(quarter);
                 return q3;
             case 4:
+                calQuarter(quarter);
                 return q4;
             default:
                 return null;
@@ -145,9 +150,55 @@ public class Channel {
 
 
     /**
-     * Calculates and sets the Month objects for each quarter based on the channel's list of months.
+     * Calculates and sets the Month objects for each quarter based on the
+     * channel's list of months.
+     * 
+     * @throws EmptyListException
      */
-    public void calQuarter() {
+    public void calQuarter(int quarter) throws EmptyListException {
+        int[] data = null;
+        if (!months.isEmpty()) {
+            switch (quarter) {
 
+                case 1:
+                    data = addMonthData(months.getEntry(0), months.getEntry(1),
+                        months.getEntry(2));
+                    q1 = new Month("Quarter 1", data[0], data[1], data[2],
+                        data[3], data[4]);
+                case 2:
+                    data = addMonthData(months.getEntry(3), months.getEntry(4),
+                        months.getEntry(5));
+                    q2 = new Month("Quarter 2", data[0], data[1], data[2],
+                        data[3], data[4]);
+                case 3:
+                    data = addMonthData(months.getEntry(6), months.getEntry(7),
+                        months.getEntry(8));
+                    q3 = new Month("Quarter 3", data[0], data[1], data[2],
+                        data[3], data[4]);
+                case 4:
+                    data = addMonthData(months.getEntry(9), months.getEntry(10),
+                        months.getEntry(11));
+                    q4 = new Month("Quarter 4", data[0], data[1], data[2],
+                        data[3], data[4]);
+                default:
+                    return;
+            }
+        }
+        else {
+            throw new EmptyListException();
+        }
+
+    }
+
+
+    private int[] addMonthData(Month a, Month b, Month c) {
+        int[] data = new int[5];
+        data[0] = a.getLikes() + b.getLikes() + c.getLikes();
+        data[1] = a.getPosts() + b.getPosts() + c.getPosts();
+        data[2] = a.getFollowers() + b.getFollowers() + c.getFollowers();
+        data[3] = a.getComments() + b.getComments() + c.getComments();
+        data[4] = a.getViews() + b.getViews() + c.getViews();
+
+        return data;
     }
 }
