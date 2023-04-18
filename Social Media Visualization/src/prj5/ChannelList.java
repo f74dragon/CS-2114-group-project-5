@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Comparator;
 import java.util.Scanner;
-import prj5.DoublyLinkedList.Node;
 
 /**
  * A class used to read a given input file and hold a list of channels.
