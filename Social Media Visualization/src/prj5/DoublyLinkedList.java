@@ -388,7 +388,8 @@ public class DoublyLinkedList<T> {
      * @param <T>
      *            The type of data to be stored
      */
-    private class Node<T> {
+    @SuppressWarnings("hiding")
+    public class Node<T> {
 
         private Node<T> next;
         private Node<T> prev;
