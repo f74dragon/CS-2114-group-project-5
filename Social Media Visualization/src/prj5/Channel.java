@@ -211,6 +211,10 @@ public class Channel {
         }
 
     }
+    
+    public String toString() {
+        return (username + ", " + channelName + ", " + country + ", " + topic);
+    }
 
 
     private int[] addMonthData(Month a, Month b, Month c) {

@@ -58,6 +58,7 @@ public class CompareByReach {
      *         value.
      */
     public int compare(Channel c1, Channel c2, Month month) {
+     
         int c1Comments = 0;
         int c1Likes = 0;
         int c1Views = 0;

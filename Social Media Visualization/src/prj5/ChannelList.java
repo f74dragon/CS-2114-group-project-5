@@ -42,31 +42,34 @@ public class ChannelList {
         int comments;
         int views;
         boolean channelFound;
+
+        file.nextLine();
+
         while (file.hasNextLine()) {
-            thisLine = file.nextLine();
-            line = new Scanner(thisLine).useDelimiter(",\\s+");
-            // set fields for this month
-            channelFound = false; // used to avoid double channels
-            month = line.next();
-            username = line.next();
-            channelName = line.next();
-            country = line.next();
-            mainTopic = line.next();
-            likes = Integer.valueOf(line.next());
-            posts = Integer.valueOf(line.next());
-            followers = Integer.valueOf(line.next());
-            comments = Integer.valueOf(line.next());
-            views = Integer.valueOf(line.next());
+            String l = file.nextLine();
+            String[] datas = l.split(",");
+            channelFound = false;
+            month = datas[0];
+            username = datas[1];
+            channelName = datas[2];
+            country = datas[3];
+            mainTopic = datas[4];
+            likes = Integer.parseInt(datas[5]);
+            posts = Integer.parseInt(datas[6]);
+            followers = Integer.parseInt(datas[7]);
+            comments = Integer.parseInt(datas[8]);
+            views = Integer.parseInt(datas[9]);
 
             DoublyLinkedList<Channel>.Node<Channel> curr = channels
                 .getFirstNode();
-            while (curr.getData() != null) {
+            while (curr != null && curr.getData() != null) {
                 if (curr.getData().getChannelName() == channelName) {
                     curr.getData().addMonth(new Month(month, likes, posts,
                         followers, comments, views));
                     channelFound = true;
                     break;
                 }
+                curr = curr.getNext();
             }
             // avoiding double channels
             if (!channelFound) {
@@ -75,44 +78,12 @@ public class ChannelList {
                     comments, views));
                 channels.add(toAdd);
             }
+
         }
         // adds dummy months with 0 for all fields so calQuarters works properly
-        for (int i = 0; i < channels.getLength(); i++) {
-            Channel curr = channels.getEntry(i);
-            if (curr.getMonth("January") == null) {
-                curr.addMonth(0, new Month("January", 0, 0, 0, 0, 0));
-            }
-            if (curr.getMonth("February") == null) {
-                curr.addMonth(1, new Month("February", 0, 0, 0, 0, 0));
-            }
-            if (curr.getMonth("March") == null) {
-                curr.addMonth(2, new Month("March", 0, 0, 0, 0, 0));
-            }
-            if (curr.getMonth("April") == null) {
-                curr.addMonth(3, new Month("April", 0, 0, 0, 0, 0));
-            }
-            if (curr.getMonth("May") == null) {
-                curr.addMonth(4, new Month("May", 0, 0, 0, 0, 0));
-            }
-            if (curr.getMonth("June") == null) {
-                curr.addMonth(5, new Month("June", 0, 0, 0, 0, 0));
-            }
-            if (curr.getMonth("July") == null) {
-                curr.addMonth(6, new Month("July", 0, 0, 0, 0, 0));
-            }
-            if (curr.getMonth("August") == null) {
-                curr.addMonth(7, new Month("August", 0, 0, 0, 0, 0));
-            }
-            if (curr.getMonth("September") == null) {
-                curr.addMonth(8, new Month("September", 0, 0, 0, 0, 0));
-            }
-            if (curr.getMonth("November") == null) {
-                curr.addMonth(8, new Month("November", 0, 0, 0, 0, 0));
-            }
-            if (curr.getMonth("December") == null) {
-                curr.addMonth(8, new Month("December", 0, 0, 0, 0, 0));
-            }
-        }
+      for (int i=0; i <channels.getLength(); i++) {
+          System.out.println(channels.getEntry(i));
+      }
     }
 
 
