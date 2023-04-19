@@ -222,7 +222,7 @@ public class DoublyLinkedList<T> {
         for (int i = 0; i < pos; i++) {
             curr = curr.getNext();
         }
-        Node<T> insert = new Node(entry, curr.getPrev(), curr.getNext());
+        Node<T> insert = new Node<T>(entry, curr.getPrev(), curr.getNext());
         curr.getPrev().setNext(insert);
         curr.getNext().setPrev(insert);
     }
