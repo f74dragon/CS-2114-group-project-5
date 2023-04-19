@@ -102,4 +102,16 @@ public class Month {
     public int getViews() {
         return views;
     }
+
+
+    /**
+     * String format of data for month.
+     *
+     * @return the number of views in the month
+     */
+    @Override
+    public String toString() {
+        return month + ": " + followers + ", " + likes + ", " + comments + ", "
+            + posts + ", " + views;
+    }
 }

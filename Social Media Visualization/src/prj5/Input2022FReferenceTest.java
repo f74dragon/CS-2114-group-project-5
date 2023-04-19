@@ -22,7 +22,6 @@ public class Input2022FReferenceTest extends student.TestCase {
     private String fileName;
     private Scanner fileData;
 
-
     /**
      * sets up any needed variables for test methods
      */

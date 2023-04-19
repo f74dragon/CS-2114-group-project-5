@@ -22,8 +22,11 @@ public class ChannelList {
      * @param fileName
      *            the name of the file to read
      * @throws FileNotFoundException
+     * @throws EmptyListException
      */
-    public ChannelList(String fileName) throws FileNotFoundException {
+    public ChannelList(String fileName)
+        throws FileNotFoundException,
+        EmptyListException {
         channels = new DoublyLinkedList<Channel>();
         // set up file i/o
         Scanner file = new Scanner(new File(fileName));
@@ -78,12 +81,50 @@ public class ChannelList {
                     comments, views));
                 channels.add(toAdd);
             }
-
         }
+
         // adds dummy months with 0 for all fields so calQuarters works properly
-      for (int i=0; i <channels.getLength(); i++) {
-          System.out.println(channels.getEntry(i));
-      }
+        for (int i = 0; i < channels.getLength(); i++) {
+            Channel curr = channels.getEntry(i);
+            if (curr.getMonth("January") == null) {
+                curr.addMonth(0, new Month("January", 0, 0, 0, 0, 0));
+            }
+            if (curr.getMonth("February") == null) {
+                curr.addMonth(1, new Month("February", 0, 0, 0, 0, 0));
+            }
+            if (curr.getMonth("March") == null) {
+                curr.addMonth(2, new Month("March", 0, 0, 0, 0, 0));
+            }
+            if (curr.getMonth("April") == null) {
+                curr.addMonth(3, new Month("April", 0, 0, 0, 0, 0));
+            }
+            if (curr.getMonth("May") == null) {
+                curr.addMonth(4, new Month("May", 0, 0, 0, 0, 0));
+            }
+            if (curr.getMonth("June") == null) {
+                curr.addMonth(5, new Month("June", 0, 0, 0, 0, 0));
+            }
+            if (curr.getMonth("July") == null) {
+                curr.addMonth(6, new Month("July", 0, 0, 0, 0, 0));
+            }
+            if (curr.getMonth("August") == null) {
+                curr.addMonth(7, new Month("August", 0, 0, 0, 0, 0));
+            }
+            if (curr.getMonth("September") == null) {
+                curr.addMonth(8, new Month("September", 0, 0, 0, 0, 0));
+            }
+            if (curr.getMonth("November") == null) {
+                curr.addMonth(8, new Month("November", 0, 0, 0, 0, 0));
+            }
+            if (curr.getMonth("December") == null) {
+                curr.addMonth(8, new Month("December", 0, 0, 0, 0, 0));
+            }
+        }
+
+        // adds dummy months with 0 for all fields so calQuarters works properly
+//        for (int i = 0; i < channels.getLength(); i++) {
+//            System.out.println(channels.getEntry(i).getQuarters(1));
+//        }
     }
 
 
@@ -103,5 +144,21 @@ public class ChannelList {
      */
     public void sort(Comparator<Channel> comp) {
         channels.sort(comp);
+    }
+
+
+    @Override
+    public String toString() {
+        String s = "";
+        for (int i = 0; i < channels.getLength(); i++) {
+            try {
+                s = s + channels.getEntry(i).getQuarters(1) + "\n";
+            }
+            catch (EmptyListException e) {
+                // TODO Auto-generated catch block
+                return "did not work";
+            }
+        }
+        return s;
     }
 }
