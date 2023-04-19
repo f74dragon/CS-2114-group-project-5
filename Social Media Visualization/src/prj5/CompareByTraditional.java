@@ -67,24 +67,14 @@ public class CompareByTraditional implements Comparator<Channel> {
         int c2Comments = 0;
         int c2Likes = 0;
         int c2Followers = 0;
-        String quarter = "";
-        if (month.getMonth().contains("1") || month.getMonth().contains("2")
-            || month.getMonth().contains("3") || month.getMonth().contains(
-                "4")) {
-            quarter = "Quarter " + month.getMonth().substring(month.getMonth()
-                .length() - 1, month.getMonth().length());
-        }
-        else {
-            quarter = month.getMonth();
-        }
 
         c1Comments = c1.getMonth(quarter).getComments();
         c1Likes = c1.getMonth(quarter).getLikes();
         c1Followers = c1.getMonth(quarter).getFollowers();
 
-        c2Comments = c1.getMonth(quarter).getComments();
-        c2Likes = c1.getMonth(quarter).getLikes();
-        c2Followers = c1.getMonth(quarter).getFollowers();
+        c2Comments = c2.getMonth(quarter).getComments();
+        c2Likes = c2.getMonth(quarter).getLikes();
+        c2Followers = c2.getMonth(quarter).getFollowers();
         int c1Final = ((c1Comments + c1Likes) / c1Followers) * 100;
         int c2Final = ((c2Comments + c2Likes) / c2Followers) * 100;
         return c1Final - c2Final;
