@@ -53,6 +53,20 @@ public class Channel {
 
 
     /**
+     * Adds a month's statistics to the channel's list of months in a specificed
+     * position.
+     * 
+     * @param pos
+     *            the position to add the month into
+     * @param month
+     *            the month to be added
+     */
+    public void addMonth(int pos, Month month) {
+        months.add(pos, month);
+    }
+
+
+    /**
      * Returns the Month object for the given month name.
      *
      * @param monthName
@@ -61,7 +75,7 @@ public class Channel {
      */
     public Month getMonth(String monthName) {
         // uses Object instead of Month to prevent class cast exception
-        for (Object month : months.toArray()) { 
+        for (Object month : months.toArray()) {
             if (((Month)month).getMonth().equals(monthName)) {
                 return (Month)month;
             }
@@ -124,7 +138,7 @@ public class Channel {
         for (int i = 0; i < monthsArray.length; i++) {
             out[i] = (Month)monthsArray[i];
         }
-        
+
         return out;
     }
 

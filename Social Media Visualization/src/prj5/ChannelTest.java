@@ -106,17 +106,62 @@ public class ChannelTest extends TestCase {
 
 
     /**
+     * tests that getQuarters returns the proper quarter
      * 
+     * @throws EmptyListException
      */
-    public void testGetQuarters() {
+    public void testGetQuarters() throws EmptyListException {
+        // testing empty channel throws error
+        Exception e;
+        for (int i = 1; i <= 4; i++) {
+            e = null;
+            try {
+                channel3.getQuarters(i);
+            }
+            catch (Exception exception) {
+                e = exception;
+            }
+            assertTrue(e instanceof EmptyListException);
+        }
+        channel2.addMonth(new Month("January", 1, 1, 1, 1, 1));
+        channel2.addMonth(new Month("Febuary", 1, 1, 1, 1, 1));
+        channel2.addMonth(new Month("March", 1, 1, 1, 1, 1));
+        channel2.addMonth(new Month("April", 2, 2, 2, 2, 2));
+        channel2.addMonth(new Month("May", 2, 2, 2, 2, 2));
+        channel2.addMonth(new Month("June", 2, 2, 2, 2, 2));
+        channel2.addMonth(new Month("July", 3, 3, 3, 3, 3));
+        channel2.addMonth(new Month("August", 3, 3, 3, 3, 3));
+        channel2.addMonth(new Month("Septeber", 3, 3, 3, 3, 3));
+        channel2.addMonth(new Month("October", 4, 4, 4, 4, 4));
+        channel2.addMonth(new Month("November", 4, 4, 4, 4, 4));
+        channel2.addMonth(new Month("December", 4, 4, 4, 4, 4));
+
+        Month q1 = channel2.getQuarters(1);
+        assertEquals(3, q1.getComments());
+        assertEquals(3, q1.getFollowers());
+        assertEquals(3, q1.getLikes());
+        assertEquals(3, q1.getPosts());
+        assertEquals(3, q1.getViews());
         
-    }
-
-
-    /**
-     * 
-     */
-    public void testCalQuarter() {
-
+        Month q2 = channel2.getQuarters(2);
+        assertEquals(6, q2.getComments());
+        assertEquals(6, q2.getFollowers());
+        assertEquals(6, q2.getLikes());
+        assertEquals(6, q2.getPosts());
+        assertEquals(6, q2.getViews());
+        
+        Month q3 = channel2.getQuarters(3);
+        assertEquals(9, q3.getComments());
+        assertEquals(9, q3.getFollowers());
+        assertEquals(9, q3.getLikes());
+        assertEquals(9, q3.getPosts());
+        assertEquals(9, q3.getViews());
+        
+        Month q4 = channel2.getQuarters(4);
+        assertEquals(12, q4.getComments());
+        assertEquals(12, q4.getFollowers());
+        assertEquals(12, q4.getLikes());
+        assertEquals(12, q4.getPosts());
+        assertEquals(12, q4.getViews());
     }
 }
