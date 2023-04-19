@@ -127,7 +127,7 @@ public class Channel {
      * @param quarter
      *            the quarter (1, 2, 3, or 4) to retrieve
      * @return the Month object for the given quarter
-     * @throws EmptyListException 
+     * @throws EmptyListException
      */
     public Month getQuarters(int quarter) throws EmptyListException {
         switch (quarter) {
