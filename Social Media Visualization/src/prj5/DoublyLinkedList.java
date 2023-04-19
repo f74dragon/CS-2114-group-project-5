@@ -309,7 +309,29 @@ public class DoublyLinkedList<T> {
             firstNode.setNext(nodeToInsert);
         }
 
-    }// end insertIntoSorted
+    }
+
+
+    /**
+     * Gives the user a string representation of the data
+     * 
+     * @return The data in the string surrounded by brackets and with comma
+     *         space separating them
+     */
+    public String toString() {
+        StringBuilder build = new StringBuilder("[");
+        T[] data = this.toArray();
+        for (int i = 0; i < data.length; i++) {
+            if (i != data.length - 1) {
+                build.append(data[i] + ", ");
+            }
+            else {
+                build.append(data[i]);
+            }
+        }
+        build.append("]");
+        return build.toString();
+    }
 
     /**
      * iterator class for the
