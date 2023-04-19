@@ -59,7 +59,7 @@ public class CompareByTraditional implements Comparator<Channel> {
      *         c1's total engagement rate is less, 0 if they have the same
      *         value.
      */
-    public int compare(Channel c1, Channel c2, Month month)
+    public int compare(Channel c1, Channel c2, String month)
         throws ArithmeticException {
         int c1Comments = 0;
         int c1Likes = 0;
@@ -68,15 +68,21 @@ public class CompareByTraditional implements Comparator<Channel> {
         int c2Likes = 0;
         int c2Followers = 0;
 
-        c1Comments = c1.getMonth(quarter).getComments();
-        c1Likes = c1.getMonth(quarter).getLikes();
-        c1Followers = c1.getMonth(quarter).getFollowers();
+        c1Comments = c1.getMonth(month).getComments();
+        c1Likes = c1.getMonth(month).getLikes();
+        c1Followers = c1.getMonth(month).getFollowers();
 
-        c2Comments = c2.getMonth(quarter).getComments();
-        c2Likes = c2.getMonth(quarter).getLikes();
-        c2Followers = c2.getMonth(quarter).getFollowers();
-        int c1Final = ((c1Comments + c1Likes) / c1Followers) * 100;
-        int c2Final = ((c2Comments + c2Likes) / c2Followers) * 100;
+        c2Comments = c2.getMonth(month).getComments();
+        c2Likes = c2.getMonth(month).getLikes();
+        c2Followers = c2.getMonth(month).getFollowers();
+        int c1Final = -Integer.MAX_VALUE;
+        int c2Final = -Integer.MAX_VALUE;
+        if (c1Followers != 0) {
+            c1Final = ((c1Comments + c1Likes) / c1Followers) * 100;
+        }
+        if (c2Followers != 0) {
+            c2Final = ((c2Comments + c2Likes) / c2Followers) * 100;
+        }
         return c1Final - c2Final;
     }
 

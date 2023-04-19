@@ -7,7 +7,8 @@ import java.util.NoSuchElementException;
 /**
  * A basic double linked list class with sentinel nodes
  * 
- * @author Jon Church (Jrchurch02)
+ * @author Jon Church (Jrchurch02), Arian Assadzadeh (arian83@vt.edu), Kevin
+ *         Xiong (kevxemail)
  * @version 2023.04.17
  * @param <T>
  *            The type of data to be stored
