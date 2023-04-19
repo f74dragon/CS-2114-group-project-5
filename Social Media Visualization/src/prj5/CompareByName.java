@@ -16,6 +16,12 @@ public class CompareByName implements Comparator<Channel> {
      *         value for vice versa, and 0 if they have the same name
      */
     public int compare(Channel c1, Channel c2) {
+        if (c1 == null) {
+            return -1;
+        }
+        if (c2 == null) {
+            return 1;
+        }
         return c1.getChannelName().compareTo(c2.getChannelName());
     }
 

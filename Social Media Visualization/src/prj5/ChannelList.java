@@ -22,8 +22,11 @@ public class ChannelList {
      * @param fileName
      *            the name of the file to read
      * @throws FileNotFoundException
+     * @throws EmptyListException
      */
-    public ChannelList(String fileName) throws FileNotFoundException {
+    public ChannelList(String fileName)
+        throws FileNotFoundException,
+        EmptyListException {
         channels = new DoublyLinkedList<Channel>();
         // set up file i/o
         Scanner file = new Scanner(new File(fileName));
@@ -42,31 +45,34 @@ public class ChannelList {
         int comments;
         int views;
         boolean channelFound;
+
+        file.nextLine();
+
         while (file.hasNextLine()) {
-            thisLine = file.nextLine();
-            line = new Scanner(thisLine).useDelimiter(",\\s+");
-            // set fields for this month
-            channelFound = false; // used to avoid double channels
-            month = line.next();
-            username = line.next();
-            channelName = line.next();
-            country = line.next();
-            mainTopic = line.next();
-            likes = Integer.valueOf(line.next());
-            posts = Integer.valueOf(line.next());
-            followers = Integer.valueOf(line.next());
-            comments = Integer.valueOf(line.next());
-            views = Integer.valueOf(line.next());
+            String l = file.nextLine();
+            String[] datas = l.split(",");
+            channelFound = false;
+            month = datas[0];
+            username = datas[1];
+            channelName = datas[2];
+            country = datas[3];
+            mainTopic = datas[4];
+            likes = Integer.parseInt(datas[5]);
+            posts = Integer.parseInt(datas[6]);
+            followers = Integer.parseInt(datas[7]);
+            comments = Integer.parseInt(datas[8]);
+            views = Integer.parseInt(datas[9]);
 
             DoublyLinkedList<Channel>.Node<Channel> curr = channels
                 .getFirstNode();
-            while (curr.getData() != null) {
+            while (curr != null && curr.getData() != null) {
                 if (curr.getData().getChannelName() == channelName) {
                     curr.getData().addMonth(new Month(month, likes, posts,
                         followers, comments, views));
                     channelFound = true;
                     break;
                 }
+                curr = curr.getNext();
             }
             // avoiding double channels
             if (!channelFound) {
@@ -76,6 +82,7 @@ public class ChannelList {
                 channels.add(toAdd);
             }
         }
+
         // adds dummy months with 0 for all fields so calQuarters works properly
         for (int i = 0; i < channels.getLength(); i++) {
             Channel curr = channels.getEntry(i);
@@ -113,6 +120,11 @@ public class ChannelList {
                 curr.addMonth(8, new Month("December", 0, 0, 0, 0, 0));
             }
         }
+
+        // adds dummy months with 0 for all fields so calQuarters works properly
+//        for (int i = 0; i < channels.getLength(); i++) {
+//            System.out.println(channels.getEntry(i).getQuarters(1));
+//        }
     }
 
 
@@ -132,5 +144,21 @@ public class ChannelList {
      */
     public void sort(Comparator<Channel> comp) {
         channels.sort(comp);
+    }
+
+
+    @Override
+    public String toString() {
+        String s = "";
+        for (int i = 0; i < channels.getLength(); i++) {
+            try {
+                s = s + channels.getEntry(i).getQuarters(1) + "\n";
+            }
+            catch (EmptyListException e) {
+                // TODO Auto-generated catch block
+                return "did not work";
+            }
+        }
+        return s;
     }
 }

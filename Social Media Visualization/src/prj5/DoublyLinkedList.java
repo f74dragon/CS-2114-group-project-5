@@ -159,7 +159,7 @@ public class DoublyLinkedList<T> {
      * @return the data from the entry
      */
     public T getEntry(int pos) {
-        if (pos >= numberOfEntries || pos < 0) {
+        if (pos > numberOfEntries || pos < 0) {
             throw new IndexOutOfBoundsException();
         }
         Node<T> curr = firstNode.getNext();

@@ -187,21 +187,25 @@ public class Channel {
                         months.getEntry(2));
                     q1 = new Month("Quarter 1", data[0], data[1], data[2],
                         data[3], data[4]);
+                    break;
                 case 2:
                     data = addMonthData(months.getEntry(3), months.getEntry(4),
                         months.getEntry(5));
                     q2 = new Month("Quarter 2", data[0], data[1], data[2],
                         data[3], data[4]);
+                    break;
                 case 3:
                     data = addMonthData(months.getEntry(6), months.getEntry(7),
                         months.getEntry(8));
                     q3 = new Month("Quarter 3", data[0], data[1], data[2],
                         data[3], data[4]);
+                    break;
                 case 4:
                     data = addMonthData(months.getEntry(9), months.getEntry(10),
                         months.getEntry(11));
                     q4 = new Month("Quarter 4", data[0], data[1], data[2],
                         data[3], data[4]);
+                    break;
                 default:
                     return;
             }
@@ -210,6 +214,11 @@ public class Channel {
             throw new EmptyListException();
         }
 
+    }
+
+
+    public String toString() {
+        return (username + ", " + channelName + ", " + country + ", " + topic);
     }
 
 
