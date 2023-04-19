@@ -17,7 +17,7 @@ public class CompareByTraditional implements Comparator<Channel> {
      *         c1's total engagement rate is less, 0 if they have the same
      *         value.
      */
-    public int compare(Channel c1, Channel c2) {
+    public int compare(Channel c1, Channel c2) throws ArithmeticException {
         Month[] c1Months = c1.toArray();
         int c1Comments = 0;
         int c1Likes = 0;
@@ -59,7 +59,8 @@ public class CompareByTraditional implements Comparator<Channel> {
      *         c1's total engagement rate is less, 0 if they have the same
      *         value.
      */
-    public int compare(Channel c1, Channel c2, Month month) {
+    public int compare(Channel c1, Channel c2, Month month)
+        throws ArithmeticException {
         int c1Comments = 0;
         int c1Likes = 0;
         int c1Followers = 0;

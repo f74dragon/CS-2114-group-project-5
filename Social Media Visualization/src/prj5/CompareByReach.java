@@ -16,7 +16,7 @@ public class CompareByReach {
      *         c1's total reach engagement rate is less, 0 if they have the same
      *         value.
      */
-    public int compare(Channel c1, Channel c2) {
+    public int compare(Channel c1, Channel c2) throws ArithmeticException {
         Month[] c1Months = c1.toArray();
         int c1Comments = 0;
         int c1Likes = 0;
@@ -57,7 +57,8 @@ public class CompareByReach {
      *         c1's total reach engagement rate is less, 0 if they have the same
      *         value.
      */
-    public int compare(Channel c1, Channel c2, String month) {
+    public int compare(Channel c1, Channel c2, String month)
+        throws ArithmeticException {
         int c1Comments = 0;
         int c1Likes = 0;
         int c1Views = 0;
