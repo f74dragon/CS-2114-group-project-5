@@ -281,40 +281,6 @@ public class DoublyLinkedList<T> {
 
 
     /**
-     * Helper method to insert a node into its proper location in a sorted
-     * linked chain.
-     * 
-     * @param nodeToInsert:
-     *            node to add to sorted section of list
-     */
-    public void insertIntoSorted(Node<T> nodeToInsert, Comparator<T> comp) {
-        T item = nodeToInsert.getData();
-        Node<T> currentNode = firstNode.getNext();
-        Node<T> previousNode = null;
-
-        while (currentNode != null && comp.compare(item, currentNode
-            .getData()) > 0) {
-            previousNode = currentNode;
-            currentNode = currentNode.getNext();
-        } // Go up to the place where the new node should be inserted
-        if (previousNode != null) { // Insert it here
-            previousNode.setNext(nodeToInsert);
-            nodeToInsert.setPrev(previousNode);
-            nodeToInsert.setNext(currentNode);
-            if (currentNode != null) {
-                currentNode.setPrev(nodeToInsert);
-            }
-        }
-        else { // Never entered the while loop
-            nodeToInsert.setNext(firstNode.getNext());
-            firstNode.getNext().setPrev(nodeToInsert);
-            firstNode.setNext(nodeToInsert);
-        }
-
-    }
-
-
-    /**
      * Gives the user a string representation of the data
      * 
      * @return The data in the string surrounded by brackets and with comma

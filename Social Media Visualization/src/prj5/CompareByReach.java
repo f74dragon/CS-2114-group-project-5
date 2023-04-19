@@ -57,31 +57,21 @@ public class CompareByReach {
      *         c1's total reach engagement rate is less, 0 if they have the same
      *         value.
      */
-    public int compare(Channel c1, Channel c2, Month month) {
+    public int compare(Channel c1, Channel c2, String month) {
         int c1Comments = 0;
         int c1Likes = 0;
         int c1Views = 0;
         int c2Comments = 0;
         int c2Likes = 0;
         int c2Views = 0;
-        String quarter = "";
-        if (month.getMonth().contains("1") || month.getMonth().contains("2")
-            || month.getMonth().contains("3") || month.getMonth().contains(
-                "4")) {
-            quarter = "Quarter " + month.getMonth().substring(month.getMonth()
-                .length() - 1, month.getMonth().length());
-        }
-        else {
-            quarter = month.getMonth();
-        }
 
-        c1Comments = c1.getMonth(quarter).getComments();
-        c1Likes = c1.getMonth(quarter).getLikes();
-        c1Views = c1.getMonth(quarter).getViews();
+        c1Comments = c1.getMonth(month).getComments();
+        c1Likes = c1.getMonth(month).getLikes();
+        c1Views = c1.getMonth(month).getViews();
 
-        c2Comments = c1.getMonth(quarter).getComments();
-        c2Likes = c1.getMonth(quarter).getLikes();
-        c2Views = c1.getMonth(quarter).getViews();
+        c2Comments = c2.getMonth(month).getComments();
+        c2Likes = c2.getMonth(month).getLikes();
+        c2Views = c2.getMonth(month).getViews();
         int c1Final = ((c1Comments + c1Likes) / c1Views) * 100;
         int c2Final = ((c2Comments + c2Likes) / c2Views) * 100;
         return c1Final - c2Final;
