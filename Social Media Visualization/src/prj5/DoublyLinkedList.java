@@ -264,23 +264,26 @@ public class DoublyLinkedList<T> {
      *            the comparator to sort by
      */
     public void sort(Comparator<T> comp) {
-        Node<T> current = firstNode.getNext();
-        if (current != null && current.getNext() != null) {
-            Node<T> unsorted = current.getNext();
-            Node<T> sorted = current;
-            sorted.setNext(null); // To be sorted
-            sorted.setPrev(new Node<T>(null)); // Put a the sentinel node there
-            firstNode = sorted.getPrev();
-            unsorted.setPrev(null); // Unlink it from the sorted portion
-                                    // entirely
-
-            while (unsorted != null) {
-                Node<T> tempToInsert = unsorted;
-                unsorted = unsorted.getNext();
-                insertIntoSorted(tempToInsert, comp);
+        Node<T> sorted = firstNode.getNext();
+        Node<T> unsorted = sorted.getNext();
+        sorted.setNext(null);
+        unsorted.setPrev(null);
+        while (unsorted.next != null) { // Traverse through all of the unsorted
+            // portion
+            int index = 0;
+            T toInsert = unsorted.getData();
+            Node<T> current = sorted;
+            while (current != null && comp.compare(toInsert, current
+                .getData()) < 0) {
+                current = current.getNext();
+                index++;
             }
+            System.out.println("Completed all of that");
+            unsorted = unsorted.getNext();
+            this.add(index, toInsert);
+            sorted = firstNode.getNext();
         }
-
+        
     }
 
 

@@ -4,6 +4,7 @@
 package prj5;
 
 import static org.junit.Assert.*;
+import java.util.Comparator;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -283,20 +284,27 @@ public class DoublyLinkedListTest {
 
 
     /**
-     * Test method for sort.
+     * Test method for sort
      */
     @Test
     public void testSort() {
-
+        t1 = new DoublyLinkedList<Integer>();
+        t1.add(1);
+        t1.add(3);
+        t1.add(4);
+        t1.add(2);
+        assertEquals("[1, 3, 4, 2]", t1.toString());
+        t1.sort(new CompareIntegers());
+        assertEquals("[1, 2, 3, 4]", t1.toString());
     }
 
-
     /**
-     * Test method for sort.
+     * Helper comparator to test the sort method
      */
-    @Test
-    public void testToString() {
-        assertEquals("[1, 2, 3]", t1.toString());
+    private class CompareIntegers implements Comparator<Integer> {
+        public int compare(Integer i1, Integer i2) {
+            return i1 - i2;
+        }
     }
 
 }
