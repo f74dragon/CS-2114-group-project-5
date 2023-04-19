@@ -60,9 +60,9 @@ public class Channel {
      * @return the Month object for the given month name
      */
     public Month getMonth(String monthName) {
-        for (Month month : months.toArray()) {
-            if (month.getMonth().equals(monthName)) {
-                return month;
+        for (Object month : months.toArray()) {
+            if (((Month)month).getMonth().equals(monthName)) {
+                return (Month)month;
             }
         }
         return null;
@@ -117,7 +117,7 @@ public class Channel {
      *         months
      */
     public Month[] toArray() {
-        return months.toArray();
+        return (Month[])months.toArray();
     }
 
 

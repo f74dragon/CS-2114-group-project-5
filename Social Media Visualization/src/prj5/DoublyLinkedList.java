@@ -62,7 +62,7 @@ public class DoublyLinkedList<T> {
 
 
     /**
-     * adds an entry in the first place in the list
+     * adds an entry in the last place in the list
      * 
      * @param entry
      *            the entry to add to the list
@@ -218,7 +218,13 @@ public class DoublyLinkedList<T> {
         if (pos > numberOfEntries || pos < 0) {
             throw new IndexOutOfBoundsException();
         }
-        // TODO implement this
+        Node<T> curr = firstNode.getNext();
+        for (int i = 0; i < pos; i++) {
+            curr = curr.getNext();
+        }
+        Node<T> insert = new Node(entry, curr.getPrev(), curr.getNext());
+        curr.getPrev().setNext(insert);
+        curr.getNext().setPrev(insert);
     }
 
 

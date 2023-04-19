@@ -18,22 +18,39 @@ public class ChannelTest extends TestCase {
      */
     public void setUp() {
         channel1 = new Channel("user1", "channel1", "US", "Sports");
+        channel1.addMonth(new Month("March", 1, 2, 3, 4, 5));
         channel2 = new Channel("user2", "channel2", "UK", "Art");
         channel3 = new Channel("user3", "channel3", "ES", "Tech");
     }
     
     /**
      * 
+     * tests that addMonth adds a month to the DLL of months
      */
     public void testAddMonth() {
-        
+        channel2.addMonth(new Month("March", 1, 2, 3, 4, 5));
+        assertNotNull(channel2.getMonth("March"));
     }
     
     /**
-     * 
+     * tests that getMonth returns the proper month.
      */
     public void testGetMonth() {
-        
+        assertNotNull(channel1.getMonth("March"));
+        Month march = channel1.getMonth("March");
+        assertEquals(1, march.getLikes());
+        assertEquals(2, march.getPosts());
+        assertEquals(3, march.getFollowers());
+        assertEquals(4, march.getComments());
+        assertEquals(5, march.getViews());
+        channel1.addMonth(new Month("August", 2, 3, 4, 5, 6));
+        assertNotNull(channel1.getMonth("August"));
+        Month august = channel1.getMonth("August");
+        assertEquals(2, august.getLikes());
+        assertEquals(3, august.getPosts());
+        assertEquals(4, august.getFollowers());
+        assertEquals(5, august.getComments());
+        assertEquals(6, august.getViews());
     }
     
     /**
