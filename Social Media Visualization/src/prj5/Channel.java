@@ -60,9 +60,10 @@ public class Channel {
      * @return the Month object for the given month name
      */
     public Month getMonth(String monthName) {
-        for (Month month : months.toArray()) {
-            if (month.getMonth().equals(monthName)) {
-                return month;
+        // uses Object instead of Month to prevent class cast exception
+        for (Object month : months.toArray()) { 
+            if (((Month)month).getMonth().equals(monthName)) {
+                return (Month)month;
             }
         }
         return null;
@@ -117,7 +118,14 @@ public class Channel {
      *         months
      */
     public Month[] toArray() {
-        return months.toArray();
+        // prevents a class cast error
+        Object[] monthsArray = months.toArray();
+        Month[] out = new Month[monthsArray.length];
+        for (int i = 0; i < monthsArray.length; i++) {
+            out[i] = (Month)monthsArray[i];
+        }
+        
+        return out;
     }
 
 

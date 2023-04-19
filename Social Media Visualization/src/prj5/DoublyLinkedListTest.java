@@ -45,6 +45,8 @@ public class DoublyLinkedListTest {
     @Test
     public void testGetFirstNode() {
         assertEquals(1, (int)t1.getFirstNode().getData());
+        t1.add(0, null);
+        assertNull(t1.getFirstNode());
     }
 
 
@@ -54,6 +56,8 @@ public class DoublyLinkedListTest {
     @Test
     public void testGetLastNode() {
         assertEquals(3, (int)t1.getLastNode().getData());
+        t1.add(null);
+        assertNull(t1.getLastNode());
     }
 
 
@@ -74,6 +78,27 @@ public class DoublyLinkedListTest {
      */
     @Test
     public void testAddIntT() {
+
+        Exception thrown = null;
+        try {
+            t1.add(10, 10);
+        }
+        catch (Exception exception) {
+            thrown = exception;
+        }
+
+        assertNotNull(thrown);
+        assertTrue(thrown instanceof IndexOutOfBoundsException);
+        thrown = null;
+        try {
+            t1.add(-10, 10);
+        }
+        catch (Exception exception) {
+            thrown = exception;
+        }
+
+        assertNotNull(thrown);
+        assertTrue(thrown instanceof IndexOutOfBoundsException);
         assertEquals(3, (int)t1.getLastNode().getData());
         t1.add(1, 6);
         assertEquals(6, (int)t1.getFirstNode().getNext().getData());
@@ -107,9 +132,28 @@ public class DoublyLinkedListTest {
         assertNotNull(thrown);
         assertTrue(thrown instanceof IndexOutOfBoundsException);
 
+        thrown = null;
+        try {
+            t4.remove(-1);
+        }
+        catch (Exception exception) {
+            thrown = exception;
+        }
+
+        assertNotNull(thrown);
+        assertTrue(thrown instanceof IndexOutOfBoundsException);
+
         assertEquals(1, (int)t1.getFirstNode().getData());
         t1.remove(0);
         assertEquals(2, (int)t1.getFirstNode().getData());
+        t1.add(10);
+        t1.add(20);
+        t1.add(30);
+        t1.add(40);
+        t1.add(50);
+        t1.add(60);
+        assertEquals(40, (int)t1.remove(5));
+
     }
 
 
@@ -139,6 +183,28 @@ public class DoublyLinkedListTest {
     @Test
     public void testGetEntry() {
         assertEquals(3, (int)t1.getEntry(2));
+
+        Exception thrown = null;
+        try {
+            t4.getEntry(0);
+        }
+        catch (Exception exception) {
+            thrown = exception;
+        }
+
+        assertNotNull(thrown);
+        assertTrue(thrown instanceof IndexOutOfBoundsException);
+
+        thrown = null;
+        try {
+            t4.getEntry(-1);
+        }
+        catch (Exception exception) {
+            thrown = exception;
+        }
+
+        assertNotNull(thrown);
+        assertTrue(thrown instanceof IndexOutOfBoundsException);
     }
 
 
@@ -168,6 +234,7 @@ public class DoublyLinkedListTest {
      */
     @Test
     public void testToArray() {
+        assertNull(t4.toArray());
         Integer[] temp = { 1, 2, 3 };
         assertArrayEquals(temp, t1.toArray());
     }
@@ -182,6 +249,27 @@ public class DoublyLinkedListTest {
         t1.replace(1, 5);
 
         assertEquals(5, (int)t1.getFirstNode().getNext().getData());
+
+        assertEquals(3, (int)t1.getEntry(2));
+
+        Exception thrown = null;
+        try {
+            t4.replace(3, 10);
+        }
+        catch (Exception exception) {
+            thrown = exception;
+        }
+
+        assertNotNull(thrown);
+        assertTrue(thrown instanceof IndexOutOfBoundsException);
+
+        thrown = null;
+        try {
+            t4.replace(-1, 10);
+        }
+        catch (Exception exception) {
+            thrown = exception;
+        }
     }
 
 
