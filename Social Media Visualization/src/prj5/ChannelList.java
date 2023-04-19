@@ -58,8 +58,8 @@ public class ChannelList {
             comments = Integer.valueOf(line.next());
             views = Integer.valueOf(line.next());
 
-            DoublyLinkedList<Channel>.Node<Channel> curr = 
-                channels.getFirstNode();
+            DoublyLinkedList<Channel>.Node<Channel> curr = channels
+                .getFirstNode();
             while (curr.getData() != null) {
                 if (curr.getData().getChannelName() == channelName) {
                     curr.getData().addMonth(new Month(month, likes, posts,
@@ -71,8 +71,8 @@ public class ChannelList {
             // avoiding double channels
             if (!channelFound) {
                 toAdd = new Channel(username, channelName, country, mainTopic);
-                toAdd.addMonth(new Month(month, likes, posts,
-                    followers, comments, views));
+                toAdd.addMonth(new Month(month, likes, posts, followers,
+                    comments, views));
                 channels.add(toAdd);
             }
         }
@@ -94,6 +94,6 @@ public class ChannelList {
      *            the comparator to use to sort
      */
     public void sort(Comparator<Channel> comp) {
-        
+        channels.sort(comp);
     }
 }
