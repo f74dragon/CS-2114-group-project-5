@@ -4,6 +4,7 @@
 package prj5;
 
 import static org.junit.Assert.*;
+import java.util.Comparator;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -179,7 +180,7 @@ public class DoublyLinkedListTest {
     public void testReplace() {
         assertEquals(2, (int)t1.getFirstNode().getNext().getData());
         t1.replace(1, 5);
-  
+
         assertEquals(5, (int)t1.getFirstNode().getNext().getData());
     }
 
@@ -195,11 +196,27 @@ public class DoublyLinkedListTest {
 
 
     /**
-     * Test method for sort.
+     * Test method for sort
      */
     @Test
     public void testSort() {
-        fail("Not yet implemented");
+        t1 = new DoublyLinkedList<Integer>();
+        t1.add(1);
+        t1.add(3);
+        t1.add(4);
+        t1.add(2);
+        assertEquals("[1, 3, 4, 2]", t1.toString());
+        t1.sort(new CompareIntegers());
+        assertEquals("[1, 2, 3, 4]", t1.toString());
+    }
+
+    /**
+     * Helper comparator to test the sort method
+     */
+    private class CompareIntegers implements Comparator<Integer> {
+        public int compare(Integer i1, Integer i2) {
+            return i1 - i2;
+        }
     }
 
 }
