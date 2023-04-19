@@ -22,9 +22,9 @@ public class CompareByNameTest {
 
     @Test
     public void testCompare() {
-        assertEquals(1, comparing.compare(c1, c2));
+        assertEquals(-1, comparing.compare(c1, c2));
         assertEquals(0, comparing.compare(c1, c1));
-        assertEquals(-1, comparing.compare(c2, c1));
+        assertEquals(1, comparing.compare(c2, c1));
     }
 
 }
