@@ -22,7 +22,8 @@ public class CompareByName implements Comparator<Channel> {
         if (c2 == null) {
             return 1;
         }
-        return c1.getChannelName().compareTo(c2.getChannelName());
+        return c1.getChannelName().toLowerCase().compareTo(c2.getChannelName()
+            .toLowerCase());
     }
 
 }

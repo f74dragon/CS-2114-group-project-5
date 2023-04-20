@@ -22,18 +22,14 @@ public class ChannelList {
      * @param fileName
      *            the name of the file to read
      * @throws FileNotFoundException
-     * @throws EmptyListException
+     * @
      */
-    public ChannelList(String fileName)
-        throws FileNotFoundException,
-        EmptyListException {
+    public ChannelList(String fileName) throws FileNotFoundException {
         channels = new DoublyLinkedList<Channel>();
         // set up file i/o
         Scanner file = new Scanner(new File(fileName));
-        Scanner line;
         // temporary fields to create each channel
         Channel toAdd;
-        String thisLine;
         String month;
         String username;
         String channelName;
@@ -141,14 +137,12 @@ public class ChannelList {
     }
 
 
-    @SuppressWarnings("unchecked")
-    public void sort(CompareByTraditional comp, String month)
-        throws EmptyListException {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public void sort(CompareByTraditional comp, String month) {
 
         Node temp = channels.getFirstNode().getNext();
-        int c = 0;
         while (temp != null) {
-            temp = temp.getNext();
+
             Node temp2 = temp;
             while (temp2 != null && temp2.getData() != null && temp2.getPrev()
                 .getData() != null && comp.compare((Channel)temp2.getPrev()
@@ -159,16 +153,15 @@ public class ChannelList {
                 temp2 = temp2.getPrev();
 
             }
+            temp = temp.getNext();
         }
     }
 
 
-    @SuppressWarnings("unchecked")
-    public void sort(CompareByReach comp, String month)
-        throws EmptyListException {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public void sort(CompareByReach comp, String month) {
         Node temp = channels.getFirstNode().getNext();
         while (temp != null) {
-            temp = temp.getNext();
             Node temp2 = temp;
             while (temp2 != null && temp2.getData() != null && temp2.getPrev()
                 .getData() != null && comp.compare((Channel)temp2.getPrev()
@@ -179,6 +172,7 @@ public class ChannelList {
                 temp2 = temp2.getPrev();
 
             }
+            temp = temp.getNext();
         }
 
     }

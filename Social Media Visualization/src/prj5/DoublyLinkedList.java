@@ -267,7 +267,6 @@ public class DoublyLinkedList<T> {
     public void sort(Comparator<T> comp) {
         Node<T> temp = getFirstNode().getNext();
         while (temp != null) {
-            temp = temp.getNext();
             Node<T> temp2 = temp;
             while (temp2 != null && temp2.data != null && ((Comparator<T>)comp)
                 .compare(temp2.getPrev().getData(), temp2.getData()) > 0) {
@@ -277,6 +276,7 @@ public class DoublyLinkedList<T> {
                 temp2 = temp2.getPrev();
 
             }
+            temp = temp.getNext();
         }
     }
 

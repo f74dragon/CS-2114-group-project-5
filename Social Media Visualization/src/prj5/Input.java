@@ -3,13 +3,11 @@ package prj5;
 import java.io.FileNotFoundException;
 
 public class Input {
-    public static void main(String[] args)
-        throws FileNotFoundException,
-        EmptyListException {
+    public static void main(String[] args) throws FileNotFoundException {
         ChannelList channelList;
         if (args.length == 0) {
 
-            channelList = new ChannelList("SampleInput1_2022.csv");
+            channelList = new ChannelList("SampleInput2_2022.csv");
 
         }
         else {
@@ -37,7 +35,7 @@ public class Input {
             }
 
         }
-        channelList.sort(compareByReachs, "Quarter 1");
+        channelList.sort(new CompareByTraditional(), "Quarter 1");
         // sort by reach
         System.out.println("**********");
         System.out.println("**********");
@@ -46,7 +44,7 @@ public class Input {
             if ((double)curr.getMonth("Quarter 1").getReach() >= 0) {
                 System.out.println(curr.getChannelName());
                 System.out.println("reach: " + String.valueOf(curr.getMonth(
-                    "Quarter 1").getTraditional()));
+                    "Quarter 1").getReach()));
                 System.out.println("==========");
             }
 

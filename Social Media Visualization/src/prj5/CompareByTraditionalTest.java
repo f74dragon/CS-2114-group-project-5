@@ -28,10 +28,10 @@ public class CompareByTraditionalTest extends TestCase {
      * has a higher engagement rate, negative if the second has a higher
      * rate, and 0 if they are even
      * 
-     * @throws EmptyListException
+     * @
      * @throws ArithmeticException
      */
-    public void testCompare() throws ArithmeticException, EmptyListException {
+    public void testCompare() throws ArithmeticException {
         assertTrue(comparing.compare(c1.getMonth("January"), c2.getMonth(
             "January")) > 0);
         assertTrue(comparing.compare(c1.getMonth("January"), c1.getMonth(

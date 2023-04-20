@@ -72,9 +72,9 @@ public class Channel {
      * @param monthName
      *            the name of the month to retrieve
      * @return the Month object for the given month name
-     * @throws EmptyListException
+     * @
      */
-    public Month getMonth(String monthName) throws EmptyListException {
+    public Month getMonth(String monthName) {
         // uses Object instead of Month to prevent class cast exception
         if (monthName.toLowerCase().contains("quarter")) {
             calQuarter(1);
@@ -83,11 +83,13 @@ public class Channel {
             calQuarter(4);
 
         }
-        for (Object month : months.toArray()) {
-            if (((Month)month).getMonth().equals(monthName)) {
-                return (Month)month;
+        for (int i = 0; i < months.getLength(); i++) {
+            if (months.getEntry(i).getMonth().equals(monthName)) {
+                return months.getEntry(i);
+
             }
         }
+
         return null;
     }
 
@@ -157,9 +159,9 @@ public class Channel {
      * @param quarter
      *            the quarter (1, 2, 3, or 4) to retrieve
      * @return the Month object for the given quarter
-     * @throws EmptyListException
+     * @
      */
-    public Month getQuarters(int quarter) throws EmptyListException {
+    public Month getQuarters(int quarter) {
         switch (quarter) {
             case 1:
                 calQuarter(quarter);
@@ -183,9 +185,9 @@ public class Channel {
      * Calculates and sets the Month objects for each quarter based on the
      * channel's list of months.
      * 
-     * @throws EmptyListException
+     * @
      */
-    public void calQuarter(int quarter) throws EmptyListException {
+    public void calQuarter(int quarter) {
         int[] data = null;
         if (!months.isEmpty()) {
             switch (quarter) {
@@ -222,15 +224,12 @@ public class Channel {
                     return;
             }
         }
-        else {
-            throw new EmptyListException();
-        }
 
     }
 
 
     public String toString() {
-        return (username + ", " + channelName + ", " + country + ", " + topic);
+        return channelName;
     }
 
 

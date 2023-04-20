@@ -45,9 +45,9 @@ public class CompareByReach implements Comparator<Month> {
      *         negative value if
      *         c1's total reach engagement rate is less, 0 if they have the same
      *         value.
-     * @throws EmptyListException
+     * @
      */
-    public double compare(Channel c1, Channel c2, String quarter) throws EmptyListException {
+    public double compare(Channel c1, Channel c2, String quarter)  {
         double c1Reach = c1.getMonth(quarter).getReach();
         double c2Reach = c2.getMonth(quarter).getReach();
         if (c1Reach < 0){

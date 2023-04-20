@@ -186,7 +186,7 @@ public class DoublyLinkedListTest {
 
         Exception thrown = null;
         try {
-            t4.getEntry(0);
+            t4.getEntry(-1);
         }
         catch (Exception exception) {
             thrown = exception;

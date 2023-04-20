@@ -48,12 +48,14 @@ public class Month {
         }
         else {
             traditional = (1.0 * (comments + likes) / followers) * 100.0;
+            traditional = (double)(Math.round((traditional * 10.0)) / 10.0);
         }
         if (views == 0) {
             reach = -1;
         }
         else {
             reach = (1.0 * (comments + likes) / views) * 100.0;
+            reach = Math.round(reach * 10.0) / 10.0;
         }
     }
 
