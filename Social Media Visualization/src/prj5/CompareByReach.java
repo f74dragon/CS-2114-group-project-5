@@ -1,6 +1,8 @@
 package prj5;
 
-public class CompareByReach {
+import java.util.Comparator;
+
+public class CompareByReach implements Comparator<Month> {
 
     /**
      * Returns which Channel has the greater amount of "reach" engagement rate
@@ -16,7 +18,7 @@ public class CompareByReach {
      *         c1's total reach engagement rate is less, 0 if they have the same
      *         value.
      */
-    public double compare(Month m1, Month m2) {
+    public int compare(Month m1, Month m2) {
         double m1Reach = m1.getReach();
         double m2Reach = m2.getReach();
         if (m1Reach < 0){
@@ -25,7 +27,7 @@ public class CompareByReach {
         if (m2Reach < 0){
             m2Reach = 0.0;
         }
-        return m1Reach - m2Reach;
+        return (int) (m1Reach - m2Reach);
        
     }
 
