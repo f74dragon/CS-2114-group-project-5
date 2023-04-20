@@ -19,17 +19,16 @@ public class CompareByTraditional implements Comparator<Month> {
      */
     public int compare(Month m1, Month m2) throws ArithmeticException {
 
-        int c1Comments = m1.getComments();
-        int c1Likes = m1.getLikes();
-        int c1Followers = m1.getFollowers();
+        double m1Trad = m1.getTraditional();
+        double m2Trad = m2.getTraditional();
+        if (m1Trad < 0) {
+            m1Trad = 0.0;
+        }
+        if (m2Trad < 0) {
+            m2Trad = 0.0;
+        }
+        return (int)(m1Trad - m2Trad);
 
-        int c2Comments = m2.getComments();
-        int c2Likes = m2.getLikes();
-        int c2Followers = m2.getFollowers();
-
-        int c1Final = ((c1Comments + c1Likes) / c1Followers) * 100;
-        int c2Final = ((c2Comments + c2Likes) / c2Followers) * 100;
-        return c1Final - c2Final;
     }
 
 
@@ -64,9 +63,5 @@ public class CompareByTraditional implements Comparator<Month> {
                 .getTraditional();
         }
     }
-
-
-   
-  
 
 }
