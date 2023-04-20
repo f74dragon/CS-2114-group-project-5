@@ -65,8 +65,10 @@ public class ChannelList {
 
             DoublyLinkedList<Channel>.Node<Channel> curr = channels
                 .getFirstNode();
+
             while (curr != null && curr.getData() != null) {
-                if (curr.getData().getChannelName() == channelName) {
+                if (curr.getData().getChannelName().equals(channelName)) {
+
                     curr.getData().addMonth(new Month(month, likes, posts,
                         followers, comments, views));
                     channelFound = true;

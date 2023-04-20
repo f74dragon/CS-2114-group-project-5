@@ -11,21 +11,20 @@ public class Input {
 
             channelList = new ChannelList("SampleInput1_2022.csv");
 
-            CompareByTraditional compareByTrads = new CompareByTraditional();
-            CompareByReach compareByReachs = new CompareByReach();
-            channelList.sort(compareByReachs, "March");
-            // System.out.println(channelList.toString());
-
         }
         else {
 
             channelList = new ChannelList(args[0]);
             channelList.toString();
         }
+        CompareByName name = new CompareByName();
+        CompareByReach compareByReachs = new CompareByReach();
+
+        channelList.sort(name);
 
         // Prints the needed stuff for intermediate submission
 
-        // TODO sort by name
+        // sort by name
         for (int i = 0; i < channelList.getChannels().getLength(); i++) {
             Channel curr = channelList.getChannels().getEntry(i);
             if ((double)curr.getMonth("Quarter 1")
@@ -38,7 +37,8 @@ public class Input {
             }
 
         }
-        // TODO sort by reach
+        channelList.sort(compareByReachs, "Quarter 1");
+        // sort by reach
         System.out.println("**********");
         System.out.println("**********");
         for (int i = channelList.getChannels().getLength() - 1; i >= 0; i--) {
