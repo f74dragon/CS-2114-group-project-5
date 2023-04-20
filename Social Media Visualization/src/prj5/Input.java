@@ -11,8 +11,9 @@ public class Input {
 
             channelList = new ChannelList("SampleInput1_2022.csv");
             System.out.println(channelList.toString());
-            CompareByTraditional compareByTrad = new CompareByTraditional();
-            channelList.sort(compareByTrad, "Quarter 1");
+            CompareByTraditional compareByName = new CompareByTraditional();
+            channelList.sort(compareByName);
+            System.out.println();
             System.out.println();
             System.out.println();
             System.out.println(channelList.toString());
@@ -21,8 +22,6 @@ public class Input {
         else {
             channelList = new ChannelList(args[0]);
             channelList.toString();
-<<<<<<< Updated upstream
-=======
             }
         
         // Prints the needed stuff for intermediate submission
@@ -42,12 +41,6 @@ public class Input {
             System.out.println(curr.getChannelName());
             System.out.println("reach: " + String.valueOf(curr.getMonth("Quarter 1").getTraditional()));
             System.out.println("==========");
->>>>>>> Stashed changes
         }
-    }
-
-
-    public void writeToFile(ChannelList channelList) {
-
     }
 }
