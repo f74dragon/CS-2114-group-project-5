@@ -124,11 +124,21 @@ public class ChannelList {
                 curr.addMonth(11, new Month("December", 0, 0, 0, 0, 0));
             }
         }
+<<<<<<< Updated upstream
 
         // adds dummy months with 0 for all fields so calQuarters works properly
 // for (int i = 0; i < channels.getLength(); i++) {
 // System.out.println(channels.getEntry(i).getQuarters(1));
 // }
+=======
+        
+        for (int i = 0; i < channels.getLength(); i++) {
+            Channel curr = channels.getEntry(i);
+            for (int j = 1; j < 5; j++) {
+                curr.calQuarter(j);
+            }
+        }    
+>>>>>>> Stashed changes
     }
 
 
