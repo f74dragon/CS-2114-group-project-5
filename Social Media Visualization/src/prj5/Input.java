@@ -6,6 +6,7 @@ public class Input {
     public static void main(String[] args)
         throws FileNotFoundException,
         EmptyListException {
+        ChannelList channelList;
         if (args.length == 0) {
 
             ChannelList channelList = new ChannelList("SampleInput1_2022.csv");
@@ -15,17 +16,33 @@ public class Input {
             channelList.sort(compareByReachs, "March");
             System.out.println();
             System.out.println();
-            System.out.println(channelList.toString());
+            // System.out.println(channelList.toString());
 
         }
         else {
-            ChannelList channelList = new ChannelList(args[0]);
+            channelList = new ChannelList(args[0]);
             channelList.toString();
         }
-    }
 
+        // Prints the needed stuff for intermediate submission
 
-    public void writeToFile(ChannelList channelList) {
-
+        // TODO sort by name
+        for (int i = 0; i < channelList.getChannels().getLength(); i++) {
+            Channel curr = channelList.getChannels().getEntry(i);
+            System.out.println(curr.getChannelName());
+            System.out.println("traditional: " + String.valueOf(curr.getMonth(
+                "Quarter 1").getTraditional()));
+            System.out.println("==========");
+        }
+        // TODO sort by reach
+        System.out.println("**********");
+        System.out.println("**********");
+        for (int i = channelList.getChannels().getLength() - 1; i >= 0; i--) {
+            Channel curr = channelList.getChannels().getEntry(i);
+            System.out.println(curr.getChannelName());
+            System.out.println("reach: " + String.valueOf(curr.getMonth(
+                "Quarter 1").getTraditional()));
+            System.out.println("==========");
+        }
     }
 }

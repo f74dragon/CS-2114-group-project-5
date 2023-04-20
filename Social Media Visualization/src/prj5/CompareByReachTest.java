@@ -65,9 +65,12 @@ public class CompareByReachTest {
         assertTrue(comparing.compare(c2, c1, "January") < 0);
         assertTrue(comparing.compare(c1, c1, "January") == 0);
 
-        assertTrue(comparing.compare(c1, c2) > 0);
-        assertTrue(comparing.compare(c2, c1) < 0);
-        assertTrue(comparing.compare(c1, c1) == 0);
+        assertTrue(comparing.compare(c1.getMonth("January"), c2.getMonth(
+            "January")) > 0);
+        assertTrue(comparing.compare(c2.getMonth("January"), c1.getMonth(
+            "January")) < 0);
+        assertTrue(comparing.compare(c1.getMonth("January"), c1.getMonth(
+            "January")) == 0);
 
     }
 
