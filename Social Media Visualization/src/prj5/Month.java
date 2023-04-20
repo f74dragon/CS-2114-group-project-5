@@ -11,8 +11,8 @@ public class Month {
     private int followers;
     private int comments;
     private int views;
-    private double traditional;
-    private double reach;
+    private Double traditional;
+    private Double reach;
 
     /**
      * Constructs a Month object with the given statistics.
@@ -44,13 +44,13 @@ public class Month {
         this.comments = comments;
         this.views = views;
         if (followers == 0) {
-            traditional = -1.0;
+            traditional = null;
         }
         else {
             traditional = (1.0 * (comments + likes) / followers) * 100.0;
         }
         if (views == 0) {
-            reach = -1.0;
+            reach = null;
         }
         else {
             reach = (1.0 * (comments + likes) / views) * 100.0;
@@ -148,4 +148,5 @@ public class Month {
         return month + ": " + followers + ", " + likes + ", " + comments + ", "
             + posts + ", " + views;
     }
+
 }

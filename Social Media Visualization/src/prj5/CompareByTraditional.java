@@ -2,7 +2,7 @@ package prj5;
 
 import java.util.Comparator;
 
-public class CompareByTraditional implements Comparator<Channel> {
+public class CompareByTraditional implements Comparator<Month> {
     /**
      * Returns which Channel has the greater amount of traditional engagement
      * rate
@@ -17,26 +17,15 @@ public class CompareByTraditional implements Comparator<Channel> {
      *         c1's total engagement rate is less, 0 if they have the same
      *         value.
      */
-    public int compare(Channel c1, Channel c2) throws ArithmeticException {
-        Month[] c1Months = c1.toArray();
-        int c1Comments = 0;
-        int c1Likes = 0;
-        int c1Followers = 0;
-        for (int i = 0; i < c1Months.length; i++) {
-            c1Comments += c1Months[i].getComments();
-            c1Likes += c1Months[i].getLikes();
-            c1Followers += c1Months[i].getFollowers();
-        }
+    public int compare(Month m1, Month m2) throws ArithmeticException {
 
-        Month[] c2Months = c2.toArray();
-        int c2Comments = 0;
-        int c2Likes = 0;
-        int c2Followers = 0;
-        for (int i = 0; i < c2Months.length; i++) {
-            c2Comments += c2Months[i].getComments();
-            c2Likes += c2Months[i].getLikes();
-            c2Followers += c2Months[i].getFollowers();
-        }
+        int c1Comments = m1.getComments();
+        int c1Likes = m1.getLikes();
+        int c1Followers = m1.getFollowers();
+
+        int c2Comments = m2.getComments();
+        int c2Likes = m2.getLikes();
+        int c2Followers = m2.getFollowers();
 
         int c1Final = ((c1Comments + c1Likes) / c1Followers) * 100;
         int c2Final = ((c2Comments + c2Likes) / c2Followers) * 100;
@@ -75,5 +64,9 @@ public class CompareByTraditional implements Comparator<Channel> {
                 .getTraditional();
         }
     }
+
+
+   
+  
 
 }
