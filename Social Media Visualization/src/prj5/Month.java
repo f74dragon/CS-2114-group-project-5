@@ -11,6 +11,8 @@ public class Month {
     private int followers;
     private int comments;
     private int views;
+    private Double traditional;
+    private Double reach;
 
     /**
      * Constructs a Month object with the given statistics.
@@ -41,6 +43,18 @@ public class Month {
         this.followers = followers;
         this.comments = comments;
         this.views = views;
+        if (followers == 0) {
+            traditional = null;
+        }
+        else {
+            traditional = (1.0 * (comments + likes) / followers) * 100.0;
+        }
+        if (views == 0) {
+            reach = null;
+        }
+        else {
+            reach = (1.0 * (comments + likes) / views) * 100.0;
+        }
     }
 
 
@@ -101,6 +115,26 @@ public class Month {
      */
     public int getViews() {
         return views;
+    }
+
+
+    /**
+     * Returns traditional engagement rate based on the given formula
+     *
+     * @return traditional engagement
+     */
+    public double getTraditional() {
+        return traditional;
+    }
+
+
+    /**
+     * Returns reach engagement rate based on the given formula
+     *
+     * @return reach engagement
+     */
+    public double getReach() {
+        return reach;
     }
 
 
