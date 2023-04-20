@@ -10,8 +10,9 @@ public class Input {
 
             ChannelList channelList = new ChannelList("SampleInput1_2022.csv");
             System.out.println(channelList.toString());
-            CompareByTraditional compareByTrad = new CompareByTraditional();
-            channelList.sort(compareByTrad, "Quarter 1");
+            CompareByTraditional compareByTrads = new CompareByTraditional();
+            CompareByReach compareByReachs = new CompareByReach();
+            channelList.sort(compareByReachs, "March");
             System.out.println();
             System.out.println();
             System.out.println(channelList.toString());

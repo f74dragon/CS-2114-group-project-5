@@ -145,7 +145,7 @@ public class Month {
      */
     @Override
     public String toString() {
-        return month;
+        return traditional + "";
     }
 
 }

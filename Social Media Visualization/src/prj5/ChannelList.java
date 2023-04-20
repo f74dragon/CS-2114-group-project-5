@@ -144,12 +144,13 @@ public class ChannelList {
     public void sort(CompareByTraditional comp, String month) {
 
         Node temp = channels.getFirstNode().getNext();
+        int c = 0;
         while (temp != null) {
             temp = temp.getNext();
             Node temp2 = temp;
-            while (temp2 != null && temp2.getData() != null && comp.compare(
-                (Channel)temp2.getPrev().getData(), (Channel)temp2.getData(),
-                month) > 0) {
+            while (temp2 != null && temp2.getData() != null && temp2.getPrev()
+                .getData() != null && comp.compare((Channel)temp2.getPrev()
+                    .getData(), (Channel)temp2.getData(), month) > 0) {
                 Channel data = (Channel)temp2.getData();
                 temp2.setData(temp2.getPrev().getData());
                 temp2.getPrev().setData(data);
@@ -166,9 +167,9 @@ public class ChannelList {
         while (temp != null) {
             temp = temp.getNext();
             Node temp2 = temp;
-            while (temp2 != null && temp2.getData() != null && comp.compare(
-                (Channel)temp2.getPrev().getData(), (Channel)temp2.getData(),
-                month) > 0) {
+            while (temp2 != null && temp2.getData() != null && temp2.getPrev()
+                .getData() != null && comp.compare((Channel)temp2.getPrev()
+                    .getData(), (Channel)temp2.getData(), month) > 0) {
                 Channel data = (Channel)temp2.getData();
                 temp2.setData(temp2.getPrev().getData());
                 temp2.getPrev().setData(data);
@@ -190,7 +191,7 @@ public class ChannelList {
     public String toString() {
         String s = "";
         for (int i = 0; i < channels.getLength(); i++) {
-            s = s + channels.getEntry(i).toString() + "\n \n";
+            s = s + channels.getEntry(i).getMonth("March").toString() + "\n \n";
         }
         return s;
     }
