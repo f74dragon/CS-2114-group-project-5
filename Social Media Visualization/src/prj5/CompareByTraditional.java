@@ -46,8 +46,9 @@ public class CompareByTraditional implements Comparator<Month> {
      *         negative value if
      *         c1's total engagement rate is less, 0 if they have the same
      *         value.
+     * @throws EmptyListException
      */
-    public double compare(Channel c1, Channel c2, String month) {
+    public double compare(Channel c1, Channel c2, String month) throws EmptyListException {
         if (c1.getMonth(month).getTraditional() < 0 && (Double)c2.getMonth(
             month).getTraditional() < 0) {
             return 0;

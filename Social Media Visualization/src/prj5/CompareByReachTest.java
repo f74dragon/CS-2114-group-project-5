@@ -22,9 +22,11 @@ public class CompareByReachTest {
 
     /**
      * Compares the two channels by an individual month's reach
+     * 
+     * @throws EmptyListException
      */
     @Test
-    public void testCompareMonth() {
+    public void testCompareMonth() throws EmptyListException {
         c1.addMonth(new Month("January", 50, 50, 50, 50, 1));
         c2.addMonth(new Month("January", 30, 30, 30, 30, 1));
 

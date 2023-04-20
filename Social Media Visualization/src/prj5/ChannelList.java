@@ -2,7 +2,6 @@ package prj5;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Comparator;
 import java.util.Scanner;
 import prj5.DoublyLinkedList.Node;
 
@@ -141,7 +140,8 @@ public class ChannelList {
 
 
     @SuppressWarnings("unchecked")
-    public void sort(CompareByTraditional comp, String month) {
+    public void sort(CompareByTraditional comp, String month)
+        throws EmptyListException {
 
         Node temp = channels.getFirstNode().getNext();
         int c = 0;
@@ -162,7 +162,8 @@ public class ChannelList {
 
 
     @SuppressWarnings("unchecked")
-    public void sort(CompareByReach comp, String month) {
+    public void sort(CompareByReach comp, String month)
+        throws EmptyListException {
         Node temp = channels.getFirstNode().getNext();
         while (temp != null) {
             temp = temp.getNext();

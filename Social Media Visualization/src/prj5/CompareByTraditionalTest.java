@@ -27,8 +27,11 @@ public class CompareByTraditionalTest extends TestCase {
      * tests both compare methods return a positive value if the first channel
      * has a higher engagement rate, negative if the second has a higher
      * rate, and 0 if they are even
+     * 
+     * @throws EmptyListException
+     * @throws ArithmeticException
      */
-    public void testCompare() {
+    public void testCompare() throws ArithmeticException, EmptyListException {
         assertTrue(comparing.compare(c1.getMonth("January"), c2.getMonth(
             "January")) > 0);
         assertTrue(comparing.compare(c1.getMonth("January"), c1.getMonth(

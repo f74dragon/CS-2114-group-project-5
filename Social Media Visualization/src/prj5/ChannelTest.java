@@ -28,8 +28,9 @@ public class ChannelTest extends TestCase {
     /**
      * 
      * tests that addMonth adds a month to the DLL of months
+     * @throws EmptyListException 
      */
-    public void testAddMonth() {
+    public void testAddMonth() throws EmptyListException {
         channel2.addMonth(new Month("March", 1, 2, 3, 4, 5));
         assertNotNull(channel2.getMonth("March"));
     }
@@ -37,8 +38,9 @@ public class ChannelTest extends TestCase {
 
     /**
      * tests that getMonth returns the proper month.
+     * @throws EmptyListException 
      */
-    public void testGetMonth() {
+    public void testGetMonth() throws EmptyListException {
         assertNotNull(channel1.getMonth("March"));
         Month march = channel1.getMonth("March");
         assertEquals(1, march.getLikes());

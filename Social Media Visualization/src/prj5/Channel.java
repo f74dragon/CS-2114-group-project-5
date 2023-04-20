@@ -72,9 +72,17 @@ public class Channel {
      * @param monthName
      *            the name of the month to retrieve
      * @return the Month object for the given month name
+     * @throws EmptyListException
      */
-    public Month getMonth(String monthName) {
+    public Month getMonth(String monthName) throws EmptyListException {
         // uses Object instead of Month to prevent class cast exception
+        if (monthName.toLowerCase().contains("quarter")) {
+            calQuarter(1);
+            calQuarter(2);
+            calQuarter(3);
+            calQuarter(4);
+
+        }
         for (Object month : months.toArray()) {
             if (((Month)month).getMonth().equals(monthName)) {
                 return (Month)month;
@@ -187,24 +195,28 @@ public class Channel {
                         months.getEntry(2));
                     q1 = new Month("Quarter 1", data[0], data[1], data[2],
                         data[3], data[4]);
+                    addMonth(q1);
                     break;
                 case 2:
                     data = addMonthData(months.getEntry(3), months.getEntry(4),
                         months.getEntry(5));
                     q2 = new Month("Quarter 2", data[0], data[1], data[2],
                         data[3], data[4]);
+                    addMonth(q2);
                     break;
                 case 3:
                     data = addMonthData(months.getEntry(6), months.getEntry(7),
                         months.getEntry(8));
                     q3 = new Month("Quarter 3", data[0], data[1], data[2],
                         data[3], data[4]);
+                    addMonth(q3);
                     break;
                 case 4:
                     data = addMonthData(months.getEntry(9), months.getEntry(10),
                         months.getEntry(11));
                     q4 = new Month("Quarter 4", data[0], data[1], data[2],
                         data[3], data[4]);
+                    addMonth(q4);
                     break;
                 default:
                     return;
