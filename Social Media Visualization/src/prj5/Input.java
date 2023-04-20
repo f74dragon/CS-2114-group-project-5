@@ -10,12 +10,12 @@ public class Input {
         if (args.length == 0) {
 
             ChannelList channelList = new ChannelList("SampleInput1_2022.csv");
-            System.out.println(channelList.toString());
+            // System.out.println(channelList.toString());
             CompareByTraditional compareByTrad = new CompareByTraditional();
-            channelList.sort(compareByTrad, "Quarter 1");
+            channelList.sort(compareByTrad, "March");
             System.out.println();
             System.out.println();
-            System.out.println(channelList.toString());
+            // System.out.println(channelList.toString());
 
         }
         else {

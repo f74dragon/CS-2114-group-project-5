@@ -52,6 +52,7 @@ public class ChannelList {
         while (file.hasNextLine()) {
             String l = file.nextLine();
             String[] datas = l.split(",");
+
             channelFound = false;
             month = datas[0];
             username = datas[1];
