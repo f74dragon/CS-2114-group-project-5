@@ -145,8 +145,7 @@ public class Month {
      */
     @Override
     public String toString() {
-        return month + ": " + followers + ", " + likes + ", " + comments + ", "
-            + posts + ", " + views;
+        return month;
     }
 
 }

@@ -187,13 +187,7 @@ public class ChannelList {
     public String toString() {
         String s = "";
         for (int i = 0; i < channels.getLength(); i++) {
-            try {
-                s = s + channels.getEntry(i).getQuarters(1) + "\n";
-            }
-            catch (EmptyListException e) {
-                // TODO Auto-generated catch block
-                return "did not work";
-            }
+            s = s + channels.getEntry(i).toString() + "\n \n";
         }
         return s;
     }

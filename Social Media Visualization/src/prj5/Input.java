@@ -1,7 +1,6 @@
 package prj5;
 
 import java.io.FileNotFoundException;
-import java.util.*;
 
 public class Input {
     public static void main(String[] args)
