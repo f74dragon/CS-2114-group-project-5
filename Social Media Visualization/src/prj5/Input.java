@@ -6,7 +6,6 @@ public class Input {
     public static void main(String[] args)
         throws FileNotFoundException,
         EmptyListException {
-        ChannelList channelList;
         if (args.length == 0) {
 
             channelList = new ChannelList("SampleInput1_2022.csv");
@@ -20,7 +19,8 @@ public class Input {
 
         }
         else {
-            channelList = new ChannelList(args[0]);
+            
+            ChannelList channelList  = new ChannelList(args[0]);
             channelList.toString();
         }
 
