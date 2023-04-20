@@ -114,11 +114,14 @@ public class ChannelList {
             if (curr.getMonth("September") == null) {
                 curr.addMonth(8, new Month("September", 0, 0, 0, 0, 0));
             }
+            if (curr.getMonth("October") == null) {
+                curr.addMonth(9, new Month("October", 0, 0, 0, 0, 0));
+            }
             if (curr.getMonth("November") == null) {
-                curr.addMonth(8, new Month("November", 0, 0, 0, 0, 0));
+                curr.addMonth(10, new Month("November", 0, 0, 0, 0, 0));
             }
             if (curr.getMonth("December") == null) {
-                curr.addMonth(8, new Month("December", 0, 0, 0, 0, 0));
+                curr.addMonth(11, new Month("December", 0, 0, 0, 0, 0));
             }
         }
 
