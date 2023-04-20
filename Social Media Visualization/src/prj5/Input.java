@@ -9,7 +9,7 @@ public class Input {
         ChannelList channelList;
         if (args.length == 0) {
 
-            ChannelList channelList = new ChannelList("SampleInput1_2022.csv");
+            channelList = new ChannelList("SampleInput1_2022.csv");
             // System.out.println(channelList.toString());
             CompareByTraditional compareByTrad = new CompareByTraditional();
             channelList.sort(compareByTrad, "March");
@@ -21,15 +21,16 @@ public class Input {
         else {
             channelList = new ChannelList(args[0]);
             channelList.toString();
-            }
-        
+        }
+
         // Prints the needed stuff for intermediate submission
-        
+
         // TODO sort by name
         for (int i = 0; i < channelList.getChannels().getLength(); i++) {
             Channel curr = channelList.getChannels().getEntry(i);
             System.out.println(curr.getChannelName());
-            System.out.println("traditional: " + String.valueOf(curr.getMonth("Quarter 1").getTraditional()));
+            System.out.println("traditional: " + String.valueOf(curr.getMonth(
+                "Quarter 1").getTraditional()));
             System.out.println("==========");
         }
         // TODO sort by reach
@@ -38,7 +39,8 @@ public class Input {
         for (int i = channelList.getChannels().getLength() - 1; i >= 0; i--) {
             Channel curr = channelList.getChannels().getEntry(i);
             System.out.println(curr.getChannelName());
-            System.out.println("reach: " + String.valueOf(curr.getMonth("Quarter 1").getTraditional()));
+            System.out.println("reach: " + String.valueOf(curr.getMonth(
+                "Quarter 1").getTraditional()));
             System.out.println("==========");
         }
     }
