@@ -6,9 +6,10 @@ public class Input {
     public static void main(String[] args)
         throws FileNotFoundException,
         EmptyListException {
+        ChannelList channelList;
         if (args.length == 0) {
 
-            ChannelList channelList = new ChannelList("SampleInput1_2022.csv");
+            channelList = new ChannelList("SampleInput1_2022.csv");
             System.out.println(channelList.toString());
             CompareByTraditional compareByTrads = new CompareByTraditional();
             CompareByReach compareByReachs = new CompareByReach();
@@ -19,8 +20,8 @@ public class Input {
 
         }
         else {
-            
-            ChannelList channelList  = new ChannelList(args[0]);
+
+            channelList = new ChannelList(args[0]);
             channelList.toString();
         }
 
