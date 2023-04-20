@@ -57,7 +57,7 @@ public class CompareByReach {
      *         c1's total reach engagement rate is less, 0 if they have the same
      *         value.
      */
-    public int compare(Channel c1, Channel c2, Month month) {
+    public int compare(Channel c1, Channel c2, String quarter) {
 
         int c1Comments = 0;
         int c1Likes = 0;
@@ -65,16 +65,6 @@ public class CompareByReach {
         int c2Comments = 0;
         int c2Likes = 0;
         int c2Views = 0;
-        String quarter = "";
-        if (month.getMonth().contains("1") || month.getMonth().contains("2")
-            || month.getMonth().contains("3") || month.getMonth().contains(
-                "4")) {
-            quarter = "Quarter " + month.getMonth().substring(month.getMonth()
-                .length() - 1, month.getMonth().length());
-        }
-        else {
-            quarter = month.getMonth();
-        }
 
         c1Comments = c1.getMonth(quarter).getComments();
         c1Likes = c1.getMonth(quarter).getLikes();
