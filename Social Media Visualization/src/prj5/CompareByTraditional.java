@@ -60,8 +60,20 @@ public class CompareByTraditional implements Comparator<Channel> {
      *         value.
      */
     public double compare(Channel c1, Channel c2, String month) {
-        return c1.getMonth(month).getTraditional() - c2.getMonth(month)
-            .getTraditional();
+        if (c1.getMonth(month).getTraditional() < 0 && (Double)c2.getMonth(
+            month).getTraditional() < 0) {
+            return 0;
+        }
+        else if ((Double)c1.getMonth(month).getTraditional() < 0) {
+            return c2.getMonth(month).getTraditional();
+        }
+        else if ((Double)c2.getMonth(month).getTraditional() < 0) {
+            return c1.getMonth(month).getTraditional();
+        }
+        else {
+            return c1.getMonth(month).getTraditional() - c2.getMonth(month)
+                .getTraditional();
+        }
     }
 
 }
