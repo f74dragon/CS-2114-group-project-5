@@ -1,6 +1,8 @@
 package prj5;
 
-public class CompareByReach {
+import java.util.Comparator;
+
+public class CompareByReach implements Comparator<Month> {
 
     /**
      * Returns which Channel has the greater amount of "reach" engagement rate
@@ -16,30 +18,17 @@ public class CompareByReach {
      *         c1's total reach engagement rate is less, 0 if they have the same
      *         value.
      */
-    public int compare(Channel c1, Channel c2) {
-        Month[] c1Months = c1.toArray();
-        int c1Comments = 0;
-        int c1Likes = 0;
-        int c1Views = 0;
-        for (int i = 0; i < c1Months.length; i++) {
-            c1Comments += c1Months[i].getComments();
-            c1Likes += c1Months[i].getLikes();
-            c1Views += c1Months[i].getViews();
+    public int compare(Month m1, Month m2) {
+        double m1Reach = m1.getReach();
+        double m2Reach = m2.getReach();
+        if (m1Reach < 0){
+            m1Reach = 0.0;
         }
-
-        Month[] c2Months = c2.toArray();
-        int c2Comments = 0;
-        int c2Likes = 0;
-        int c2Views = 0;
-        for (int i = 0; i < c2Months.length; i++) {
-            c2Comments += c2Months[i].getComments();
-            c2Likes += c2Months[i].getLikes();
-            c2Views += c2Months[i].getViews();
+        if (m2Reach < 0){
+            m2Reach = 0.0;
         }
-
-        int c1Final = ((c1Comments + c1Likes) / c1Views) * 100;
-        int c2Final = ((c2Comments + c2Likes) / c2Views) * 100;
-        return c1Final - c2Final;
+        return (int) (m1Reach - m2Reach);
+       
     }
 
 
