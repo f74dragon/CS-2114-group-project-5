@@ -11,9 +11,8 @@ public class Input {
 
             ChannelList channelList = new ChannelList("SampleInput1_2022.csv");
             System.out.println(channelList.toString());
-            CompareByTraditional compareByName = new CompareByTraditional();
-            channelList.sort(compareByName);
-            System.out.println();
+            CompareByTraditional compareByTrad = new CompareByTraditional();
+            channelList.sort(compareByTrad, "Quarter 1");
             System.out.println();
             System.out.println();
             System.out.println(channelList.toString());
@@ -27,6 +26,6 @@ public class Input {
 
 
     public void writeToFile(ChannelList channelList) {
-       
+
     }
 }
