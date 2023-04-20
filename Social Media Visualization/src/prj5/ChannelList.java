@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Comparator;
 import java.util.Scanner;
+import prj5.DoublyLinkedList.Node;
 
 /**
  * A class used to read a given input file and hold a list of channels.
@@ -51,7 +52,6 @@ public class ChannelList {
         while (file.hasNextLine()) {
             String l = file.nextLine();
             String[] datas = l.split(",");
-
             channelFound = false;
             month = datas[0];
             username = datas[1];
@@ -114,20 +114,21 @@ public class ChannelList {
             if (curr.getMonth("September") == null) {
                 curr.addMonth(8, new Month("September", 0, 0, 0, 0, 0));
             }
+            if (curr.getMonth("October") == null) {
+                curr.addMonth(9, new Month("October", 0, 0, 0, 0, 0));
+            }
             if (curr.getMonth("November") == null) {
-                curr.addMonth(8, new Month("November", 0, 0, 0, 0, 0));
+                curr.addMonth(10, new Month("November", 0, 0, 0, 0, 0));
             }
             if (curr.getMonth("December") == null) {
-                curr.addMonth(8, new Month("December", 0, 0, 0, 0, 0));
+                curr.addMonth(11, new Month("December", 0, 0, 0, 0, 0));
             }
         }
-        
-        for (int i = 0; i < channels.getLength(); i++) {
-            Channel curr = channels.getEntry(i);
-            for (int j = 1; j < 5; j++) {
-                curr.calQuarter(i);
-            }
-        }    
+
+        // adds dummy months with 0 for all fields so calQuarters works properly
+// for (int i = 0; i < channels.getLength(); i++) {
+// System.out.println(channels.getEntry(i).getQuarters(1));
+// }
     }
 
 
@@ -143,12 +144,13 @@ public class ChannelList {
     public void sort(CompareByTraditional comp, String month) {
 
         Node temp = channels.getFirstNode().getNext();
+        int c = 0;
         while (temp != null) {
             temp = temp.getNext();
             Node temp2 = temp;
-            while (temp2 != null && temp2.getData() != null && comp.compare(
-                (Channel)temp2.getPrev().getData(), (Channel)temp2.getData(),
-                month) > 0) {
+            while (temp2 != null && temp2.getData() != null && temp2.getPrev()
+                .getData() != null && comp.compare((Channel)temp2.getPrev()
+                    .getData(), (Channel)temp2.getData(), month) > 0) {
                 Channel data = (Channel)temp2.getData();
                 temp2.setData(temp2.getPrev().getData());
                 temp2.getPrev().setData(data);
@@ -165,9 +167,9 @@ public class ChannelList {
         while (temp != null) {
             temp = temp.getNext();
             Node temp2 = temp;
-            while (temp2 != null && temp2.getData() != null && comp.compare(
-                (Channel)temp2.getPrev().getData(), (Channel)temp2.getData(),
-                month) > 0) {
+            while (temp2 != null && temp2.getData() != null && temp2.getPrev()
+                .getData() != null && comp.compare((Channel)temp2.getPrev()
+                    .getData(), (Channel)temp2.getData(), month) > 0) {
                 Channel data = (Channel)temp2.getData();
                 temp2.setData(temp2.getPrev().getData());
                 temp2.getPrev().setData(data);
@@ -181,6 +183,7 @@ public class ChannelList {
 
     public void sort(CompareByName comp) {
         channels.sort(comp);
+
     }
 
 
