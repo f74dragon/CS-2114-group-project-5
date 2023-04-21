@@ -37,7 +37,21 @@ public class ChannelListTest extends TestCase {
      * tests that both sort methods will sort by the proper order.
      */
     public void testSorts() {
-        
+        channelList.sort(new CompareByName());
+        assertEquals("ArtAllDay\r\n"
+            + "australian_wildlife\r\n"
+            + "JustBeatz\r\n"
+            + "wizardHighSchool\r\n", channelList.toString());
+        channelList.sort(new CompareByTraditional(), "January");
+        assertEquals("australian_wildlife\r\n"
+            + "ArtAllDay\r\n"
+            + "wizardHighSchool\r\n"
+            + "JustBeatz\r\n", channelList.toString());
+        channelList.sort(new CompareByReach(), "January");
+        assertEquals("australian_wildlife\r\n"
+            + "ArtAllDay\r\n"
+            + "wizardHighSchool\r\n"
+            + "JustBeatz\r\n", channelList.toString());
     }
     
     /**
