@@ -27,9 +27,7 @@ public class ChannelTest extends TestCase {
 
 
     /**
-     * 
      * tests that addMonth adds a month to the DLL of months
-     * @
      */
     public void testAddMonth() {
         channel2.addMonth(new Month("March", 1, 2, 3, 4, 5));
@@ -39,7 +37,6 @@ public class ChannelTest extends TestCase {
 
     /**
      * tests that getMonth returns the proper month.
-     * @
      */
     public void testGetMonth() {
         assertNotNull(channel1.getMonth("March"));
@@ -91,6 +88,14 @@ public class ChannelTest extends TestCase {
 
 
     /**
+     * tests that getTopic returns the given topic
+     */
+    public void testGetTopic() {
+        assertEquals("Sports", channel1.getTopic());
+    }
+
+
+    /**
      * tests that toArray returns a proper array with each month
      */
     public void testToArray() {
@@ -110,10 +115,11 @@ public class ChannelTest extends TestCase {
 
     /**
      * tests that getQuarters returns the proper quarter
-     * 
-     * @
      */
     public void testGetQuarters() {
+
+        assertTrue(channel1.get)
+
         channel2.addMonth(new Month("January", 1, 1, 1, 1, 1));
         channel2.addMonth(new Month("Febuary", 1, 1, 1, 1, 1));
         channel2.addMonth(new Month("March", 1, 1, 1, 1, 1));
@@ -154,5 +160,7 @@ public class ChannelTest extends TestCase {
         assertEquals(12, q4.getLikes());
         assertEquals(12, q4.getPosts());
         assertEquals(12, q4.getViews());
+
+        assertNull(channel2.getQuarters(5));
     }
 }
