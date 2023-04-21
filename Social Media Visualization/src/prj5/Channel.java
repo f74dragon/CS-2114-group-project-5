@@ -75,8 +75,7 @@ public class Channel {
     /**
      * Returns the DoublyLinkedList of months
      * 
-     * @param months
-     *            The DLL of months
+     * @return the DLL of months
      */
     public DoublyLinkedList<Month> getMonths() {
         return this.months;
@@ -238,6 +237,8 @@ public class Channel {
                         data[3], data[4]);
                     addMonth(q4);
                     break;
+                default:
+                    return; // do nothing if quarter isn't 1,2,3, or 4
             }
         }
 
@@ -248,7 +249,6 @@ public class Channel {
      * Returns the String representation of this channel
      *
      * @return The String representation for the channel
-     * @return the name of the channel
      */
     public String toString() {
         return channelName;
