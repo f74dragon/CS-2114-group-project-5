@@ -262,15 +262,7 @@ public class Channel {
         int[] data = new int[5];
         data[0] = a.getLikes() + b.getLikes() + c.getLikes();
         data[1] = a.getPosts() + b.getPosts() + c.getPosts();
-        if (c.getFollowers() != 0) {
-            data[2] = c.getFollowers();
-        }
-        else if (b.getFollowers() != 0) {
-            data[2] = b.getFollowers();
-        }
-        else {
-            data[2] = a.getFollowers();
-        }
+        data[2] = c.getFollowers();
         data[3] = a.getComments() + b.getComments() + c.getComments();
         data[4] = a.getViews() + b.getViews() + c.getViews();
 

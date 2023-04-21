@@ -39,7 +39,11 @@ public class Input {
                 System.out.println("traditional: " + String.valueOf(curr
                     .getMonth("Quarter 1").getTraditional()));
                 System.out.println("==========");
-
+            }
+            else {
+                System.out.println(curr.getChannelName());
+                System.out.println("traditional: N/A");
+                System.out.println("==========");
             }
 
         }
@@ -53,6 +57,11 @@ public class Input {
                 System.out.println(curr.getChannelName());
                 System.out.println("reach: " + String.valueOf(curr.getMonth(
                     "Quarter 1").getReach()));
+                System.out.println("==========");
+            }
+            else {
+                System.out.println(curr.getChannelName());
+                System.out.println("reach: N/A");
                 System.out.println("==========");
             }
 

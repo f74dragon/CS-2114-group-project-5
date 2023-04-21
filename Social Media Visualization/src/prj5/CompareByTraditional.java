@@ -7,24 +7,23 @@ import java.util.Comparator;
  * engagement rate.
  *
  *
- * @author Jon Church (Jrchurch02), Arian Assadzadeh (arian83@vt.edu), Kevin
- *         Xiong (kevxemail)
+ * @author Arian, Kevin, Jon
+ *
  * @version 04-18-2023
  * 
  */
 public class CompareByTraditional implements Comparator<Month> {
     /**
-     * Returns which Channel has the greater amount of traditional engagement
-     * rate
-     * based on the provided formula for ALL months.
+     * Returns which Month has the greater amount of traditional engagement
+     * rate.
      * 
-     * @param c1
-     *            The first channel in question.
-     * @param c2
-     *            The second channel in question.
-     * @return A positive value if c1's total engagement rate is greater, a
+     * @param m1
+     *            The first month in question.
+     * @param m2
+     *            The second month in question.
+     * @return A positive value if m1's total engagement rate is greater, a
      *         negative value if
-     *         c1's total engagement rate is less, 0 if they have the same
+     *         m1's total engagement rate is less, 0 if they have the same
      *         value.
      */
     public int compare(Month m1, Month m2) throws ArithmeticException {
