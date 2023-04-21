@@ -73,6 +73,17 @@ public class Channel {
 
 
     /**
+     * Returns the DoublyLinkedList of months
+     * 
+     * @param months
+     *            The DLL of months
+     */
+    public DoublyLinkedList<Month> getMonths() {
+        return this.months;
+    }
+
+
+    /**
      * Returns the Month object for the given month name.
      *
      * @param monthName
@@ -199,7 +210,6 @@ public class Channel {
         int[] data = null;
         if (!months.isEmpty()) {
             switch (quarter) {
-
                 case 1:
                     data = addMonthData(months.getEntry(0), months.getEntry(1),
                         months.getEntry(2));
@@ -228,8 +238,6 @@ public class Channel {
                         data[3], data[4]);
                     addMonth(q4);
                     break;
-                default:
-                    return;
             }
         }
 
