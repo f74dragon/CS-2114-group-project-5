@@ -8,8 +8,9 @@ import prj5.DoublyLinkedList.Node;
 /**
  * A class used to read a given input file and hold a list of channels.
  * 
- * @author Jon Church (Jrchurch02)
- * @version 2023.04.18
+ * @author Jon Church (Jrchurch02), Arian Assadzadeh (arian83@vt.edu), Kevin
+ *         Xiong (kevxemail)
+ * @version 04-18-2023
  */
 public class ChannelList {
 
@@ -22,7 +23,6 @@ public class ChannelList {
      * @param fileName
      *            the name of the file to read
      * @throws FileNotFoundException
-     * @
      */
     public ChannelList(String fileName) throws FileNotFoundException {
         channels = new DoublyLinkedList<Channel>();

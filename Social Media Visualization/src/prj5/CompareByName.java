@@ -6,8 +6,8 @@ import java.util.Comparator;
  * CompareByName class for comparing the channel list by channel names.
  *
  *
- * @author Arian, Kevin, Jon
- *
+ * @author Jon Church (Jrchurch02), Arian Assadzadeh (arian83@vt.edu), Kevin
+ *         Xiong (kevxemail)
  * @version 04-18-2023
  * 
  */

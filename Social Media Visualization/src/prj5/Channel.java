@@ -6,8 +6,8 @@ package prj5;
  * channel name, country, and topic.
  *
  *
- * @author Arian, Kevin, Jon
- *
+ * @author Jon Church (Jrchurch02), Arian Assadzadeh (arian83@vt.edu), Kevin
+ *         Xiong (kevxemail)
  * @version 04-18-2023
  *
  */
@@ -165,7 +165,6 @@ public class Channel {
      * @param quarter
      *            the quarter (1, 2, 3, or 4) to retrieve
      * @return the Month object for the given quarter
-     * @
      */
     public Month getQuarters(int quarter) {
         switch (quarter) {
@@ -191,7 +190,9 @@ public class Channel {
      * Calculates and sets the Month objects for each quarter based on the
      * channel's list of months.
      * 
-     * @
+     * @param quarter
+     *            The quarter we'd like to do this for represented by a number
+     *            1-4
      */
     public void calQuarter(int quarter) {
         int[] data = null;
@@ -234,11 +235,19 @@ public class Channel {
     }
 
 
+    /**
+     * Returns the String representation of this channel
+     *
+     * @return The String representation for the channel
+     */
     public String toString() {
         return channelName;
     }
 
 
+    /**
+     * Helper method to calQuarter which gives month data for a quarter
+     */
     private int[] addMonthData(Month a, Month b, Month c) {
         int[] data = new int[5];
         data[0] = a.getLikes() + b.getLikes() + c.getLikes();

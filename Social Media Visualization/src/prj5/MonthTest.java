@@ -5,8 +5,9 @@ import student.TestCase;
 /**
  * Test class for the Month class
  * 
- * @author Jon Church (Jrchurch02)
- * @version 2023.04.18
+ * @author Jon Church (Jrchurch02), Arian Assadzadeh (arian83@vt.edu), Kevin
+ *         Xiong (kevxemail)
+ * @version 04-18-2023
  */
 public class MonthTest extends TestCase {
 

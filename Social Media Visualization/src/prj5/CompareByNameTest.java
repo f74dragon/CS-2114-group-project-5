@@ -3,12 +3,13 @@ package prj5;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+
 /**
  * Test class for CompareByName.
  *
  *
- * @author Arian, Kevin, Jon
- *
+ * @author Jon Church (Jrchurch02), Arian Assadzadeh (arian83@vt.edu), Kevin
+ *         Xiong (kevxemail)
  * @version 04-18-2023
  * 
  */

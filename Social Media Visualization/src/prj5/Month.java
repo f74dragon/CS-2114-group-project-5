@@ -5,8 +5,8 @@ package prj5;
  * posts, followers, comments, and views.
  *
  *
- * @author Arian, Kevin, Jon
- *
+ * @author Jon Church (Jrchurch02), Arian Assadzadeh (arian83@vt.edu), Kevin
+ *         Xiong (kevxemail)
  * @version 04-18-2023
  */
 public class Month {

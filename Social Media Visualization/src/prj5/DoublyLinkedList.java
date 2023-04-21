@@ -9,7 +9,7 @@ import java.util.NoSuchElementException;
  * 
  * @author Jon Church (Jrchurch02), Arian Assadzadeh (arian83@vt.edu), Kevin
  *         Xiong (kevxemail)
- * @version 2023.04.17
+ * @version 04-18-2023
  * @param <T>
  *            The type of data to be stored
  */
@@ -305,7 +305,9 @@ public class DoublyLinkedList<T> {
     /**
      * iterator class for the
      * 
-     * @author Jon Church (Jrchurch02)
+     * @author Jon Church (Jrchurch02), Arian Assadzadeh (arian83@vt.edu), Kevin
+     *         Xiong (kevxemail)
+     * @version 04-18-2023
      *
      * @param <T>
      *            The type of data to be stored
@@ -374,8 +376,9 @@ public class DoublyLinkedList<T> {
      * A node class to hold the data and link the chain for
      * the DoubleLinkedList class
      * 
-     * @author Jon Church (Jrchurch02)
-     * @version 2023.04.17
+     * @author Jon Church (Jrchurch02), Arian Assadzadeh (arian83@vt.edu), Kevin
+     *         Xiong (kevxemail)
+     * @version 04-18-2023
      * @param <T>
      *            The type of data to be stored
      */
