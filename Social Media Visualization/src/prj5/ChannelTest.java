@@ -30,6 +30,8 @@ public class ChannelTest extends TestCase {
      * tests that addMonth adds a month to the DLL of months
      */
     public void testAddMonth() {
+        channel2.addMonth(0, new Month("January", 1, 2, 3, 4, 5));
+        assertEquals("January", channel2.getMonths().getEntry(0).getMonth());
         channel2.addMonth(new Month("March", 1, 2, 3, 4, 5));
         assertNotNull(channel2.getMonth("March"));
     }
@@ -54,6 +56,7 @@ public class ChannelTest extends TestCase {
         assertEquals(4, august.getFollowers());
         assertEquals(5, august.getComments());
         assertEquals(6, august.getViews());
+
     }
 
 
@@ -118,7 +121,12 @@ public class ChannelTest extends TestCase {
      */
     public void testGetQuarters() {
 
-        assertTrue(channel1.get)
+        channel1.calQuarter(5); // Channel1 is not empty yet but passing a value
+                                // of 5 should do nothing
+        channel1.getMonths().remove(0);
+        assertTrue(channel1.getMonths().isEmpty());
+        channel1.calQuarter(5); // Ensure nothing happens with an empty months
+                                // list in channel1
 
         channel2.addMonth(new Month("January", 1, 1, 1, 1, 1));
         channel2.addMonth(new Month("Febuary", 1, 1, 1, 1, 1));
@@ -163,4 +171,13 @@ public class ChannelTest extends TestCase {
 
         assertNull(channel2.getQuarters(5));
     }
+
+
+    /**
+     * Tests the toString() method
+     */
+    public void testToString() {
+        assertEquals("channel1", channel1.toString());
+    }
+
 }

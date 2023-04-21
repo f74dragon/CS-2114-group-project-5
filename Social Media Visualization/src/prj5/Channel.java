@@ -209,7 +209,6 @@ public class Channel {
         int[] data = null;
         if (!months.isEmpty()) {
             switch (quarter) {
-
                 case 1:
                     data = addMonthData(months.getEntry(0), months.getEntry(1),
                         months.getEntry(2));
