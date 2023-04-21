@@ -2,6 +2,16 @@ package prj5;
 
 import java.util.Comparator;
 
+/**
+ * CompareByReach that compares two channels my their reach
+ * engagement rate.
+ *
+ *
+ * @author Arian, Kevin, Jon
+ *
+ * @version 04-18-2023
+ * 
+ */
 public class CompareByReach implements Comparator<Month> {
 
     /**
@@ -21,14 +31,14 @@ public class CompareByReach implements Comparator<Month> {
     public int compare(Month m1, Month m2) {
         double m1Reach = m1.getReach();
         double m2Reach = m2.getReach();
-        if (m1Reach < 0){
+        if (m1Reach < 0) {
             m1Reach = 0.0;
         }
-        if (m2Reach < 0){
+        if (m2Reach < 0) {
             m2Reach = 0.0;
         }
-        return (int) (m1Reach - m2Reach);
-       
+        return (int)(m1Reach - m2Reach);
+
     }
 
 
@@ -47,13 +57,13 @@ public class CompareByReach implements Comparator<Month> {
      *         value.
      * @
      */
-    public double compare(Channel c1, Channel c2, String quarter)  {
+    public double compare(Channel c1, Channel c2, String quarter) {
         double c1Reach = c1.getMonth(quarter).getReach();
         double c2Reach = c2.getMonth(quarter).getReach();
-        if (c1Reach < 0){
+        if (c1Reach < 0) {
             c1Reach = 0.0;
         }
-        if (c2Reach < 0){
+        if (c2Reach < 0) {
             c2Reach = 0.0;
         }
         return c1Reach - c2Reach;

@@ -2,6 +2,15 @@ package prj5;
 
 import java.util.Comparator;
 
+/**
+ * CompareByName class for comparing the channel list by channel names.
+ *
+ *
+ * @author Arian, Kevin, Jon
+ *
+ * @version 04-18-2023
+ * 
+ */
 public class CompareByName implements Comparator<Channel> {
     /**
      * Returns which object is "greater" based on which has the greater String

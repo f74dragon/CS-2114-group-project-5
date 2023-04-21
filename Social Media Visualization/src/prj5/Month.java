@@ -3,6 +3,11 @@ package prj5;
 /**
  * A class representing a month with social media statistics, such as likes,
  * posts, followers, comments, and views.
+ *
+ *
+ * @author Arian, Kevin, Jon
+ *
+ * @version 04-18-2023
  */
 public class Month {
     private String month;

@@ -2,6 +2,14 @@ package prj5;
 
 import java.io.FileNotFoundException;
 
+/**
+ * Input class or project runner. Takes in file names and prints out results.
+ *
+ * @author Arian, Kevin, Jon
+ *
+ * @version 04-18-2023
+ *
+ */
 public class Input {
     public static void main(String[] args) throws FileNotFoundException {
         ChannelList channelList;
@@ -16,7 +24,7 @@ public class Input {
             channelList.toString();
         }
         CompareByName name = new CompareByName();
-        CompareByReach compareByReachs = new CompareByReach();
+        new CompareByReach();
 
         channelList.sort(name);
 

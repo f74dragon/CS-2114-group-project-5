@@ -4,6 +4,12 @@ package prj5;
  * A class representing a social media channel with a list of monthly statistics
  * and other attributes such as username,
  * channel name, country, and topic.
+ *
+ *
+ * @author Arian, Kevin, Jon
+ *
+ * @version 04-18-2023
+ *
  */
 public class Channel {
     private DoublyLinkedList<Month> months;

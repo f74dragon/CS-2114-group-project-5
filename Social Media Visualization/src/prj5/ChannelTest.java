@@ -3,7 +3,7 @@ package prj5;
 import student.TestCase;
 
 /**
- * test class for the channel class
+ * Test class for the channel class
  * 
  * @author Jon Church (Jrchurch02)
  * @version 2023.04.18
@@ -28,9 +28,9 @@ public class ChannelTest extends TestCase {
     /**
      * 
      * tests that addMonth adds a month to the DLL of months
-     * @ 
+     * @
      */
-    public void testAddMonth()  {
+    public void testAddMonth() {
         channel2.addMonth(new Month("March", 1, 2, 3, 4, 5));
         assertNotNull(channel2.getMonth("March"));
     }
@@ -38,9 +38,9 @@ public class ChannelTest extends TestCase {
 
     /**
      * tests that getMonth returns the proper month.
-     * @ 
+     * @
      */
-    public void testGetMonth()  {
+    public void testGetMonth() {
         assertNotNull(channel1.getMonth("March"));
         Month march = channel1.getMonth("March");
         assertEquals(1, march.getLikes());
@@ -112,7 +112,7 @@ public class ChannelTest extends TestCase {
      * 
      * @
      */
-    public void testGetQuarters()  {
+    public void testGetQuarters() {
         channel2.addMonth(new Month("January", 1, 1, 1, 1, 1));
         channel2.addMonth(new Month("Febuary", 1, 1, 1, 1, 1));
         channel2.addMonth(new Month("March", 1, 1, 1, 1, 1));
@@ -132,21 +132,21 @@ public class ChannelTest extends TestCase {
         assertEquals(3, q1.getLikes());
         assertEquals(3, q1.getPosts());
         assertEquals(3, q1.getViews());
-        
+
         Month q2 = channel2.getQuarters(2);
         assertEquals(6, q2.getComments());
         assertEquals(2, q2.getFollowers());
         assertEquals(6, q2.getLikes());
         assertEquals(6, q2.getPosts());
         assertEquals(6, q2.getViews());
-        
+
         Month q3 = channel2.getQuarters(3);
         assertEquals(9, q3.getComments());
         assertEquals(3, q3.getFollowers());
         assertEquals(9, q3.getLikes());
         assertEquals(9, q3.getPosts());
         assertEquals(9, q3.getViews());
-        
+
         Month q4 = channel2.getQuarters(4);
         assertEquals(12, q4.getComments());
         assertEquals(4, q4.getFollowers());

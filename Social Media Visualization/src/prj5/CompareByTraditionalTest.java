@@ -2,6 +2,15 @@ package prj5;
 
 import student.TestCase;
 
+/**
+ * Test class for Comparing by traditional.
+ *
+ *
+ * @author Arian, Kevin, Jon
+ *
+ * @version 04-18-2023
+ * 
+ */
 public class CompareByTraditionalTest extends TestCase {
 
     private CompareByTraditional comparing;
@@ -29,7 +38,8 @@ public class CompareByTraditionalTest extends TestCase {
      * rate, and 0 if they are even
      * 
      * @
-     * @throws ArithmeticException
+     * @throws
+     *       ArithmeticException
      */
     public void testCompare() throws ArithmeticException {
         assertTrue(comparing.compare(c1.getMonth("January"), c2.getMonth(

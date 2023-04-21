@@ -4,6 +4,16 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * CompareByReachTest that test the compare method that compares two channels my
+ * their reach engagement rate.
+ *
+ *
+ * @author Arian, Kevin, Jon
+ *
+ * @version 04-18-2023
+ * 
+ */
 public class CompareByReachTest {
     private CompareByReach comparing;
     private Channel c1;
@@ -26,7 +36,7 @@ public class CompareByReachTest {
      * @
      */
     @Test
-    public void testCompareMonth()  {
+    public void testCompareMonth() {
         c1.addMonth(new Month("January", 50, 50, 50, 50, 1));
         c2.addMonth(new Month("January", 30, 30, 30, 30, 1));
 

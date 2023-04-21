@@ -2,6 +2,16 @@ package prj5;
 
 import java.util.Comparator;
 
+/**
+ * CompareByTraditional that compares two channels my their traditional
+ * engagement rate.
+ *
+ *
+ * @author Arian, Kevin, Jon
+ *
+ * @version 04-18-2023
+ * 
+ */
 public class CompareByTraditional implements Comparator<Month> {
     /**
      * Returns which Channel has the greater amount of traditional engagement
@@ -48,7 +58,7 @@ public class CompareByTraditional implements Comparator<Month> {
      *         value.
      * @
      */
-    public double compare(Channel c1, Channel c2, String month)  {
+    public double compare(Channel c1, Channel c2, String month) {
         if (c1.getMonth(month).getTraditional() < 0 && (Double)c2.getMonth(
             month).getTraditional() < 0) {
             return 0;

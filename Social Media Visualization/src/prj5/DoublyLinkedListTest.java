@@ -9,8 +9,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * @author arian
+ * Test class for DoulblyLinkedList.
  *
+ * @author Arian, Kevin, Jon
+ *
+ * @version 04-18-2023
+ *
+ * @param <T>
+ *            the type of data stored in the linked list
  */
 public class DoublyLinkedListTest {
 
