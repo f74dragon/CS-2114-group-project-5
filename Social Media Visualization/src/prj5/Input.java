@@ -47,7 +47,7 @@ public class Input {
             }
 
         }
-        channelList.sort(new CompareByTraditional(), "Quarter 1");
+        channelList.sort(new CompareByReach(), "Quarter 1");
         // sort by reach
         System.out.println("**********");
         System.out.println("**********");
