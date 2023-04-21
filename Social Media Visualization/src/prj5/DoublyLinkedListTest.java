@@ -7,6 +7,8 @@ import static org.junit.Assert.*;
 import java.util.Comparator;
 import org.junit.Before;
 import org.junit.Test;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Test class for DoulblyLinkedList.
@@ -201,7 +203,7 @@ public class DoublyLinkedListTest {
 
         thrown = null;
         try {
-            t4.getEntry(-1);
+            t4.getEntry(5);
         }
         catch (Exception exception) {
             thrown = exception;
@@ -284,6 +286,28 @@ public class DoublyLinkedListTest {
     public void testContains() {
         assertTrue(t1.contains(3));
         assertFalse(t1.contains(6));
+    }
+
+
+    /**
+     * Tests the nested iterator for DLL
+     */
+    public void testIterator() {
+        t5.add("A");
+        t5.add("B");
+        t5 = new DoublyLinkedList<String>();
+        Iterator<String> iter = t5.iterator();
+        Exception thrown = null;
+        try {
+            iter.next();
+        }
+        catch (Exception e) {
+            thrown = e;
+        }
+        assertNotNull(thrown);
+        assertTrue(thrown instanceof NoSuchElementException);
+        iter.remove();
+
     }
 
 

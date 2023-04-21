@@ -223,7 +223,9 @@ public class DoublyLinkedList<T> {
         for (int i = 0; i < pos; i++) {
             curr = curr.getNext();
         }
-        Node<T> insert = new Node<T>(entry, curr.getPrev(), curr.getNext());
+        Node<T> insert = new Node<T>(entry);
+        insert.setPrev(curr.getPrev());
+        insert.setNext(curr.getNext());
         curr.getPrev().setNext(insert);
         curr.getNext().setPrev(insert);
     }
@@ -268,8 +270,8 @@ public class DoublyLinkedList<T> {
         Node<T> temp = getFirstNode().getNext();
         while (temp != null) {
             Node<T> temp2 = temp;
-            while (temp2 != null && temp2.data != null && ((Comparator<T>)comp)
-                .compare(temp2.getPrev().getData(), temp2.getData()) > 0) {
+            while (temp2.data != null && ((Comparator<T>)comp).compare(temp2
+                .getPrev().getData(), temp2.getData()) > 0) {
                 T data = temp2.getData();
                 temp2.setData(temp2.getPrev().getData());
                 temp2.getPrev().setData(data);
