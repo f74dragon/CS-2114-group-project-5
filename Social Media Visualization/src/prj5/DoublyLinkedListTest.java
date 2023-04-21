@@ -15,8 +15,6 @@ import org.junit.Test;
  *         Xiong (kevxemail)
  * @version 04-18-2023
  *
- * @param <T>
- *            the type of data stored in the linked list
  */
 public class DoublyLinkedListTest {
 

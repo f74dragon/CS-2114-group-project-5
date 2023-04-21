@@ -29,6 +29,9 @@ public class CompareByNameTest {
     }
 
 
+    /**
+     * tests that the comparator compares properly
+     */
     @Test
     public void testCompare() {
         assertEquals(-1, comparing.compare(c1, c2));

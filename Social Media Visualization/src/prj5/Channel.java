@@ -193,6 +193,7 @@ public class Channel {
      * @param quarter
      *            The quarter we'd like to do this for represented by a number
      *            1-4
+     *            the quarter to calculate
      */
     public void calQuarter(int quarter) {
         int[] data = null;
@@ -239,6 +240,7 @@ public class Channel {
      * Returns the String representation of this channel
      *
      * @return The String representation for the channel
+     * @return the name of the channel
      */
     public String toString() {
         return channelName;

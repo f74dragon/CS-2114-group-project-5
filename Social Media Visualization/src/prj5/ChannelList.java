@@ -137,6 +137,15 @@ public class ChannelList {
     }
 
 
+    /**
+     * a sort method that sorts by traditional for a given month or
+     * quarter
+     * 
+     * @param comp
+     *            the comparator to use
+     * @param month
+     *            the month that is being compared
+     */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public void sort(CompareByTraditional comp, String month) {
 
@@ -158,6 +167,15 @@ public class ChannelList {
     }
 
 
+    /**
+     * a sort method that sorts by a reach for a given month or
+     * quarter
+     * 
+     * @param comp
+     *            the comparator to use
+     * @param month
+     *            the month that is being compared
+     */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public void sort(CompareByReach comp, String month) {
         Node temp = channels.getFirstNode().getNext();
@@ -178,12 +196,22 @@ public class ChannelList {
     }
 
 
+    /**
+     * sorts the channels by a given comparator
+     * 
+     * @param comp
+     *            the comparator to use
+     */
     public void sort(CompareByName comp) {
         channels.sort(comp);
 
     }
 
 
+    /**
+     * @return a string representation of the list, which is the name of each
+     *         channel in the list
+     */
     @Override
     public String toString() {
         String s = "";

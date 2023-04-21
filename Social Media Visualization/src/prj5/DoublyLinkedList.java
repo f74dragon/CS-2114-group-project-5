@@ -389,12 +389,28 @@ public class DoublyLinkedList<T> {
         private Node<T> prev;
         private T data;
 
+        /**
+         * constructor that initiates a node with no connected nodes
+         * 
+         * @param data
+         *            the data in the node
+         */
         @SuppressWarnings("unused")
         Node(T data) {
             this(data, null, null);
         }
 
 
+        /**
+         * constructor that initiated a node with connected nodes on both sides
+         * 
+         * @param data
+         *            the data in the node
+         * @param prev
+         *            the previous node
+         * @param next
+         *            the next node
+         */
         Node(T data, Node<T> prev, Node<T> next) {
             this.data = data;
             this.prev = prev;
@@ -402,31 +418,58 @@ public class DoublyLinkedList<T> {
         }
 
 
+        /**
+         * @return the next node
+         */
         public Node<T> getNext() {
             return next;
         }
 
 
+        /**
+         * @return the previous node
+         */
         public Node<T> getPrev() {
             return prev;
         }
 
 
+        /**
+         * sets the next node of the node
+         * 
+         * @param next
+         *            the new next node
+         */
         public void setNext(Node<T> next) {
             this.next = next;
         }
 
 
+        /**
+         * sets the previous node of the node
+         * 
+         * @param prev
+         *            the new previous node
+         */
         public void setPrev(Node<T> prev) {
             this.prev = prev;
         }
 
 
+        /**
+         * @return the data of the node
+         */
         public T getData() {
             return data;
         }
 
 
+        /**
+         * sets the data of the node
+         * 
+         * @param entry
+         *            the new data for the node
+         */
         public void setData(T entry) {
             data = entry;
         }

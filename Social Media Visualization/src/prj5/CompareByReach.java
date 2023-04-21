@@ -15,17 +15,16 @@ import java.util.Comparator;
 public class CompareByReach implements Comparator<Month> {
 
     /**
-     * Returns which Channel has the greater amount of "reach" engagement rate
-     * based on the provided formula for ALL months.
+     * Returns which Month has the greater amount of "reach" engagement rate.
      * 
-     * @param c1
-     *            The first channel in question.
-     * @param c2
-     *            The second channel in question.
-     * @return A positive value if c1's total reach engagement rate is greater,
+     * @param m1
+     *            The first month in question.
+     * @param m2
+     *            The second month in question.
+     * @return A positive value if m1's total reach engagement rate is greater,
      *         a
      *         negative value if
-     *         c1's total reach engagement rate is less, 0 if they have the same
+     *         m1's total reach engagement rate is less, 0 if they have the same
      *         value.
      */
     public int compare(Month m1, Month m2) {
@@ -50,6 +49,8 @@ public class CompareByReach implements Comparator<Month> {
      *            The first channel in question.
      * @param c2
      *            The second channel in question.
+     * @param quarter
+     *            the month or quarter to check
      * @return A positive value if c1's total reach engagement rate is greater,
      *         a
      *         negative value if

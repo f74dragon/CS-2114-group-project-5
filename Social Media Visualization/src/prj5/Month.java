@@ -10,7 +10,7 @@ package prj5;
  * @version 04-18-2023
  */
 public class Month {
-    private String month;
+    private String name;
     private int likes;
     private int posts;
     private int followers;
@@ -42,7 +42,7 @@ public class Month {
         int followers,
         int comments,
         int views) {
-        this.month = month;
+        this.name = month;
         this.likes = likes;
         this.posts = posts;
         this.followers = followers;
@@ -71,7 +71,7 @@ public class Month {
      * @return the name of the month
      */
     public String getMonth() {
-        return month;
+        return name;
     }
 
 
