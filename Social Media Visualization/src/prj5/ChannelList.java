@@ -121,11 +121,6 @@ public class ChannelList {
                 curr.addMonth(11, new Month("December", 0, 0, 0, 0, 0));
             }
         }
-
-        // adds dummy months with 0 for all fields so calQuarters works properly
-// for (int i = 0; i < channels.getLength(); i++) {
-// System.out.println(channels.getEntry(i).getQuarters(1));
-// }
     }
 
 
@@ -216,7 +211,7 @@ public class ChannelList {
     public String toString() {
         String s = "";
         for (int i = 0; i < channels.getLength(); i++) {
-            s = s + channels.getEntry(i).toString() + "\n \n";
+            s = s + channels.getEntry(i).toString() + "\n";
         }
         return s;
     }

@@ -148,11 +148,12 @@ public class Month {
     /**
      * String format of data for month.
      *
-     * @return the number of views in the month
+     * @return the name and data in the month
      */
     @Override
     public String toString() {
-        return traditional + "";
+        return name + ", likes:" + likes + ", posts:" + posts + ", followers:"
+            + followers + ", comments:" + comments + ", views:" + views;
     }
 
 }

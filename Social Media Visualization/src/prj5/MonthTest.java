@@ -13,6 +13,8 @@ public class MonthTest extends TestCase {
 
     private Month month1;
     private Month month2;
+    private Month monthNoFollowers;
+    private Month monthNoViews;
 
     /**
      * sets up the testing environment
@@ -20,6 +22,8 @@ public class MonthTest extends TestCase {
     public void setUp() {
         month1 = new Month("August", 1, 2, 3, 4, 5);
         month2 = new Month("March", 11, 22, 33, 44, 55);
+        monthNoFollowers = new Month("March", 1, 1, 0, 1, 1);
+        monthNoViews = new Month("March", 1, 1, 1, 1, 0);
     }
 
 
@@ -74,5 +78,35 @@ public class MonthTest extends TestCase {
     public void testGetViews() {
         assertEquals(5, month1.getViews());
         assertEquals(55, month2.getViews());
+    }
+
+
+    /**
+     * tests that getReach returns the traditional engagement or -1 if the are
+     * no followers
+     */
+    public void testGetTraditional() {
+        assertEquals(166.7, month1.getTraditional(), 0.1);
+        assertEquals(-1.0, monthNoFollowers.getTraditional(), 0.1);
+    }
+
+
+    /**
+     * tests that getReach returns the reach engagement or -1 if the are no
+     * views
+     */
+    public void testGetReach() {
+        assertEquals(100.0, month1.getReach(), 0.1);
+        assertEquals(-1.0, monthNoViews.getReach(), 0.1);
+    }
+
+
+    /**
+     * 
+     */
+    public void testToString() {
+        assertEquals(
+            "August, likes:1, posts:2, followers:3, comments:4, views:5", month1
+                .toString());
     }
 }
