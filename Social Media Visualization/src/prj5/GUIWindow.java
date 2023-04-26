@@ -22,6 +22,7 @@ public class GUIWindow {
     private String selectedMonth;
     private String engagementType;
     private String sortType;
+    int length;
 
     /**
      * Constructor for the GUIWindow.
@@ -40,7 +41,9 @@ public class GUIWindow {
         sortType = "Name";
         this.channelList = channelList;
         window = new Window();
-
+        length = channelList.getChannels().getLength();
+        shapes = new Shape[length];
+       
         // buttons for each month
         Button jan = new Button();
         jan.setTitle("January");
@@ -256,15 +259,22 @@ public class GUIWindow {
      * choose what to display
      */
     private void update() {
-        double max; // used to make the ratio of bar sizes
-        if (engagementType == "Traditional") {
-            if (sortType == "Name") {
-                max = channelList.getChannels().getEntry(0).getMonth(selectedMonth).getTraditional();
-            }
-            else {
-                
-            }
+        for (int i = 0; i < length; i++) {
+            shapes[i] = new Shape(20, 40 * i, 20, 20);
+            window.addShape(shapes[i]);
         }
+//        double max; // used to make the ratio of bar sizes
+//        if (engagementType == "Traditional") {
+//            if (sortType == "Name") {
+//                
+//            }
+//            else {
+//                max = channelList.getChannels().getEntry(0).getMonth(selectedMonth).getTraditional();
+//            }
+//        }
+//        else {
+//            
+//        }
     }
 
 }
