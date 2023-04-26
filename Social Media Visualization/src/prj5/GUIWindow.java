@@ -256,7 +256,15 @@ public class GUIWindow {
      * choose what to display
      */
     private void update() {
-
+        double max; // used to make the ratio of bar sizes
+        if (engagementType == "Traditional") {
+            if (sortType == "Name") {
+                max = channelList.getChannels().getEntry(0).getMonth(selectedMonth).getTraditional();
+            }
+            else {
+                
+            }
+        }
     }
 
 }
