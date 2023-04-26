@@ -283,11 +283,20 @@ public class GUIWindow {
 
             TextShape text;
             if (engagementType == "Traditional") {
-                text = new TextShape(50 + xIncrement * i, bottomPlacement + 20, String.valueOf(tempMonth.getTraditional()));
+                if (tempMonth.getTraditional() < 0) {
+                    text = new TextShape(50 + xIncrement * i, bottomPlacement + 20, "No Data");
+                }
+                else{
+                    text = new TextShape(50 + xIncrement * i, bottomPlacement + 20, String.valueOf(tempMonth.getTraditional()));
+                }
             }
             else {
-                text = new TextShape(50 + xIncrement * i, bottomPlacement + 20, String.valueOf(tempMonth.getReach()));
-                
+                if (tempMonth.getReach() < 0) {
+                    text = new TextShape(50 + xIncrement * i, bottomPlacement + 20, "No Data");
+                }
+                else{
+                    text = new TextShape(50 + xIncrement * i, bottomPlacement + 20, String.valueOf(tempMonth.getReach()));
+                }
             }
             TextShape text2 = new TextShape(50 + xIncrement * i,
                 bottomPlacement, channelList.getChannels().getEntry(i)
