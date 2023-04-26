@@ -46,12 +46,12 @@ public class GUIWindow {
         this.channelList = channelList;
         window = new Window();
         length = channelList.getChannels().getLength();
-        
+
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         double width = screenSize.getWidth();
         double height = screenSize.getHeight();
 
-        window.setSize((int)(width*0.8), (int)(height*0.9));
+        window.setSize((int)(width * 0.8), (int)(height * 0.9));
         // buttons for each month
         Button jan = new Button();
         jan.setTitle("January");
@@ -145,7 +145,7 @@ public class GUIWindow {
         window.addButton(chooseReach, WindowSide.WEST);
 
         // ==========================
-        
+
         sortByEngagement();
     }
 
@@ -269,8 +269,10 @@ public class GUIWindow {
 
 
     /**
-     * should update the guys in the background, while the buttons just sort and
-     * choose what to display
+     * 
+     * Updates the shapes on the screen by re-doing the looping of ChannelList.
+     * This way the user has decided to sort will be shown.
+     * 
      */
     private void update() {
         window.removeAllShapes();
@@ -289,7 +291,7 @@ public class GUIWindow {
             }
             int width = 50;
             int bottomPlacement = window.getHeight() * 2 / 3;
-            Shape tempShape = new Shape(50 + xIncrement * i, bottomPlacement
+            Shape tempShape = new Shape((xIncrement * (length-i))+50, bottomPlacement
                 - height, width, height, color);
             window.addShape(tempShape);
 
