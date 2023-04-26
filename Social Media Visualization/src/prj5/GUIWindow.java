@@ -1,5 +1,6 @@
 package prj5;
 
+import java.awt.Color;
 import cs2.Button;
 import cs2.Shape;
 import cs2.Window;
@@ -17,6 +18,7 @@ import cs2.WindowSide;
 public class GUIWindow {
 
     private Shape[] shapes;
+    private int length;
     private Window window;
     private ChannelList channelList;
     private String selectedMonth;
@@ -36,6 +38,7 @@ public class GUIWindow {
      *            the list of channels to display
      */
     public GUIWindow(ChannelList channelList) {
+
         selectedMonth = "January";
         engagementType = "Traditional";
         sortType = "Name";
@@ -135,6 +138,11 @@ public class GUIWindow {
         chooseReach.setTitle("Reach Engagement Rate");
         chooseReach.onClick(this, "clickedReach");
         window.addButton(chooseReach, WindowSide.WEST);
+
+        // ==========================
+        Shape xShape = new Shape(window.getWidth() / 10, (window.getHeight()
+            * 2) / 3, 50, 300, Color.black);
+        
     }
 
 
