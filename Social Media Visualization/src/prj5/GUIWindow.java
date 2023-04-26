@@ -1,6 +1,8 @@
 package prj5;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import cs2.Button;
 import cs2.Shape;
 import cs2.TextShape;
@@ -18,7 +20,6 @@ import cs2.WindowSide;
  */
 public class GUIWindow {
 
-    private Shape[] shapes;
     private int length;
     private Window window;
     private ChannelList channelList;
@@ -45,8 +46,12 @@ public class GUIWindow {
         this.channelList = channelList;
         window = new Window();
         length = channelList.getChannels().getLength();
+        
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double width = screenSize.getWidth();
+        double height = screenSize.getHeight();
 
-        shapes = new Shape[length];
+        window.setSize((int)(width*0.8), (int)(height*0.9));
         // buttons for each month
         Button jan = new Button();
         jan.setTitle("January");
@@ -195,6 +200,7 @@ public class GUIWindow {
      * and then updates the GUI
      */
     private void sortByEngagement() {
+        System.out.println(channelList.getChannels().toString());
         if (engagementType == "Traditional") {
             CompareByTraditional comp = new CompareByTraditional();
             channelList.sort(comp, selectedMonth);
@@ -203,6 +209,7 @@ public class GUIWindow {
             CompareByReach comp = new CompareByReach();
             channelList.sort(comp, selectedMonth);
         }
+        System.out.println(channelList.getChannels().toString());
         update();
     }
 
@@ -220,6 +227,9 @@ public class GUIWindow {
         if (sortType == "Engagement") {
             sortByEngagement();
         }
+        else {
+            update();
+        }
     }
 
 
@@ -234,6 +244,9 @@ public class GUIWindow {
         engagementType = "Reach";
         if (sortType == "Engagement") {
             sortByEngagement();
+        }
+        else {
+            update();
         }
     }
 
