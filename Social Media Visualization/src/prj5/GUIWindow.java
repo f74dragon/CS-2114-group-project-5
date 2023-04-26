@@ -18,7 +18,6 @@ public class GUIWindow {
 
     private Shape[] shapes;
     private Window window;
-    private Button[] buttons;
     private ChannelList channelList;
     private String selectedMonth;
     private String engagementType;
@@ -198,28 +197,39 @@ public class GUIWindow {
 
 
     /**
-     * sets the engagement type to be traditional and calls sortByEngagement to
-     * sort and update the GUI
+     * sets the engagement type to be traditional and then sorts and updates the
+     * GUI by calling sortByEngagement or simply updating the GUI
+     * 
      * 
      * @param button
      *            the button pressed
      */
     public void clickedTraditional(Button button) {
         engagementType = "Traditional";
-        sortByEngagement();
+        if (sortType == "Engagement") {
+            sortByEngagement();
+        }
+        else {
+            update();
+        }
     }
 
 
     /**
-     * sets the engagement type to be reach and calls sortByEngagement to
-     * sort and update the GUI
+     * sets the engagement type to be reach and and then sorts and updates the
+     * GUI by calling sortByEngagement or simply updating the GUI
      * 
      * @param button
      *            the button pressed
      */
     public void clickedReach(Button button) {
         engagementType = "Reach";
-        sortByEngagement();
+        if (sortType == "Engagement") {
+            sortByEngagement();
+        }
+        else {
+            update();
+        }
     }
 
 
