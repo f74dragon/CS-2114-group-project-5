@@ -1,6 +1,8 @@
 package prj5;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import cs2.Button;
 import cs2.Shape;
 import cs2.TextShape;
@@ -45,9 +47,12 @@ public class GUIWindow {
         this.channelList = channelList;
         window = new Window();
         length = channelList.getChannels().getLength();
-
         
-        window.setSize(1000, 1000);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        double width = screenSize.getWidth();
+        double height = screenSize.getHeight();
+
+        window.setSize((int)(width*0.8), (int)(height*0.9));
         shapes = new Shape[length];
         // buttons for each month
         Button jan = new Button();
