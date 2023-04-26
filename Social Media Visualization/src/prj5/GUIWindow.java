@@ -145,9 +145,8 @@ public class GUIWindow {
         window.addButton(chooseReach, WindowSide.WEST);
 
         // ==========================
-        Shape xShape = new Shape(window.getWidth() / 10, (window.getHeight()
-            * 2) / 3, 50, 300, Color.black);
-
+        
+        sortByEngagement();
     }
 
 
