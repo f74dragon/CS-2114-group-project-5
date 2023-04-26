@@ -66,57 +66,57 @@ public class GUIWindow {
         mar.onClick(this, "clickedMonth");
         window.addButton(mar, WindowSide.SOUTH);
         Button apr = new Button();
-        apr.setTitle("April");
-        apr.onClick(this, "clickedMonth");
-        window.addButton(apr, WindowSide.SOUTH);
-        Button may = new Button();
-        may.setTitle("May");
-        may.onClick(this, "clickedMonth");
-        window.addButton(may, WindowSide.SOUTH);
-        Button jun = new Button();
-        jun.setTitle("June");
-        jun.onClick(this, "clickedMonth");
-        window.addButton(jun, WindowSide.SOUTH);
-        Button jul = new Button();
-        jul.setTitle("July");
-        jul.onClick(this, "clickedMonth");
-        window.addButton(jul, WindowSide.SOUTH);
-        Button aug = new Button();
-        aug.setTitle("August");
-        aug.onClick(this, "clickedMonth");
-        window.addButton(aug, WindowSide.SOUTH);
-        Button sep = new Button();
-        sep.setTitle("September");
-        sep.onClick(this, "clickedMonth");
-        window.addButton(sep, WindowSide.SOUTH);
-        Button oct = new Button();
-        oct.setTitle("October");
-        oct.onClick(this, "clickedMonth");
-        window.addButton(oct, WindowSide.SOUTH);
-        Button nov = new Button();
-        nov.setTitle("November");
-        nov.onClick(this, "clickedMonth");
-        window.addButton(nov, WindowSide.SOUTH);
-        Button dec = new Button();
-        dec.setTitle("December");
-        dec.onClick(this, "clickedMonth");
-        window.addButton(dec, WindowSide.SOUTH);
+//        apr.setTitle("April");
+//        apr.onClick(this, "clickedMonth");
+//        window.addButton(apr, WindowSide.SOUTH);
+//        Button may = new Button();
+//        may.setTitle("May");
+//        may.onClick(this, "clickedMonth");
+//        window.addButton(may, WindowSide.SOUTH);
+//        Button jun = new Button();
+//        jun.setTitle("June");
+//        jun.onClick(this, "clickedMonth");
+//        window.addButton(jun, WindowSide.SOUTH);
+//        Button jul = new Button();
+//        jul.setTitle("July");
+//        jul.onClick(this, "clickedMonth");
+//        window.addButton(jul, WindowSide.SOUTH);
+//        Button aug = new Button();
+//        aug.setTitle("August");
+//        aug.onClick(this, "clickedMonth");
+//        window.addButton(aug, WindowSide.SOUTH);
+//        Button sep = new Button();
+//        sep.setTitle("September");
+//        sep.onClick(this, "clickedMonth");
+//        window.addButton(sep, WindowSide.SOUTH);
+//        Button oct = new Button();
+//        oct.setTitle("October");
+//        oct.onClick(this, "clickedMonth");
+//        window.addButton(oct, WindowSide.SOUTH);
+//        Button nov = new Button();
+//        nov.setTitle("November");
+//        nov.onClick(this, "clickedMonth");
+//        window.addButton(nov, WindowSide.SOUTH);
+//        Button dec = new Button();
+//        dec.setTitle("December");
+//        dec.onClick(this, "clickedMonth");
+//        window.addButton(dec, WindowSide.SOUTH);
         Button q1 = new Button();
         q1.setTitle("Quarter 1");
         q1.onClick(this, "clickedMonth");
         window.addButton(q1, WindowSide.SOUTH);
-        Button q2 = new Button();
-        q2.setTitle("Quarter 2");
-        q2.onClick(this, "clickedMonth");
-        window.addButton(q2, WindowSide.SOUTH);
-        Button q3 = new Button();
-        q3.setTitle("Quarter 3");
-        q3.onClick(this, "clickedMonth");
-        window.addButton(q3, WindowSide.SOUTH);
-        Button q4 = new Button();
-        q4.setTitle("Quarter 4");
-        q4.onClick(this, "clickedMonth");
-        window.addButton(q4, WindowSide.SOUTH);
+//        Button q2 = new Button();
+//        q2.setTitle("Quarter 2");
+//        q2.onClick(this, "clickedMonth");
+//        window.addButton(q2, WindowSide.SOUTH);
+//        Button q3 = new Button();
+//        q3.setTitle("Quarter 3");
+//        q3.onClick(this, "clickedMonth");
+//        window.addButton(q3, WindowSide.SOUTH);
+//        Button q4 = new Button();
+//        q4.setTitle("Quarter 4");
+//        q4.onClick(this, "clickedMonth");
+//        window.addButton(q4, WindowSide.SOUTH);
 
         // buttons for choosing the sort method
         Button sortEngage = new Button();
@@ -199,7 +199,6 @@ public class GUIWindow {
      * and then updates the GUI
      */
     private void sortByEngagement() {
-        System.out.println(channelList.getChannels().toString());
         if (engagementType == "Traditional") {
             CompareByTraditional comp = new CompareByTraditional();
             channelList.sort(comp, selectedMonth);
@@ -208,7 +207,6 @@ public class GUIWindow {
             CompareByReach comp = new CompareByReach();
             channelList.sort(comp, selectedMonth);
         }
-        System.out.println(channelList.getChannels().toString());
         update();
     }
 
@@ -276,52 +274,103 @@ public class GUIWindow {
      */
     private void update() {
         window.removeAllShapes();
-        for (int i = 0; i < length; i++) {
-            Month tempMonth = channelList.getChannels().getEntry(i).getMonth(
-                selectedMonth);
-            int xIncrement = (window.getWidth() / (1 + length));
-            Color color = new Color((int)(Math.random() * 255), (int)(Math
-                .random() * 255), (int)(Math.random() * 255));
-            int height = 0;
-            if (engagementType == "Traditional") {
-                height = (int)tempMonth.getTraditional() * 5;
-            }
-            else {
-                height = (int)tempMonth.getReach() * 5;
-            }
-            int width = 50;
-            int bottomPlacement = window.getHeight() * 2 / 3;
-            Shape tempShape = new Shape((xIncrement * (length-i))+50, bottomPlacement
-                - height, width, height, color);
-            window.addShape(tempShape);
-
-            TextShape text;
-            if (engagementType == "Traditional") {
-                if (tempMonth.getTraditional() < 0) {
-                    text = new TextShape(50 + xIncrement * i, bottomPlacement
-                        + 20, "No Data");
+        if (sortType == "Name") {
+            for (int i = 0; i < length; i++) {
+                Month tempMonth = channelList.getChannels().getEntry(i).getMonth(
+                    selectedMonth);
+                int xIncrement = (window.getWidth() / (1 + length));
+                Color color = new Color((int)(Math.random() * 255), (int)(Math
+                    .random() * 255), (int)(Math.random() * 255));
+                int height = 0;
+                if (engagementType == "Traditional") {
+                    height = (int)tempMonth.getTraditional() * 5;
                 }
                 else {
-                    text = new TextShape(50 + xIncrement * i, bottomPlacement
-                        + 20, String.valueOf(tempMonth.getTraditional()));
+                    height = (int)tempMonth.getReach() * 5;
                 }
-            }
-            else {
-                if (tempMonth.getReach() < 0) {
-                    text = new TextShape(50 + xIncrement * i, bottomPlacement
-                        + 20, "No Data");
+                int width = 50;
+                int bottomPlacement = window.getHeight() * 2 / 3;
+                Shape tempShape = new Shape(50 + xIncrement * i, bottomPlacement
+                    - height, width, height, color);
+                window.addShape(tempShape);
+    
+                TextShape text;
+                if (engagementType == "Traditional") {
+                    if (tempMonth.getTraditional() < 0) {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, "No Data");
+                    }
+                    else {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, String.valueOf(tempMonth.getTraditional()));
+                    }
                 }
                 else {
-                    text = new TextShape(50 + xIncrement * i, bottomPlacement
-                        + 20, String.valueOf(tempMonth.getReach()));
+                    if (tempMonth.getReach() < 0) {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, "No Data");
+                    }
+                    else {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, String.valueOf(tempMonth.getReach()));
+                    }
                 }
+                TextShape text2 = new TextShape(50 + xIncrement * i,
+                    bottomPlacement, channelList.getChannels().getEntry(i)
+                        .getChannelName());
+                window.addShape(text);
+                window.addShape(text2);
+    
             }
-            TextShape text2 = new TextShape(50 + xIncrement * i,
-                bottomPlacement, channelList.getChannels().getEntry(i)
-                    .getChannelName());
-            window.addShape(text);
-            window.addShape(text2);
+        }
+        else {
+            for (int i = 0; i < length; i++) {
+                Month tempMonth = channelList.getChannels().getEntry((length - 1) - i).getMonth(
+                    selectedMonth);
+                int xIncrement = (window.getWidth() / (1 + length));
+                Color color = new Color((int)(Math.random() * 255), (int)(Math
+                    .random() * 255), (int)(Math.random() * 255));
+                int height = 0;
+                if (engagementType == "Traditional") {
+                    height = (int)tempMonth.getTraditional() * 5;
+                }
+                else {
+                    height = (int)tempMonth.getReach() * 5;
+                }
+                int width = 50;
+                int bottomPlacement = window.getHeight() * 2 / 3;
+                Shape tempShape = new Shape(50 + xIncrement * i, bottomPlacement
+                    - height, width, height, color);
+                window.addShape(tempShape);
 
+                TextShape text;
+                if (engagementType == "Traditional") {
+                    if (tempMonth.getTraditional() < 0) {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, "No Data");
+                    }
+                    else {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, String.valueOf(tempMonth.getTraditional()));
+                    }
+                }
+                else {
+                    if (tempMonth.getReach() < 0) {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, "No Data");
+                    }
+                    else {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, String.valueOf(tempMonth.getReach()));
+                    }
+                }
+                TextShape text2 = new TextShape(50 + xIncrement * i,
+                    bottomPlacement, channelList.getChannels().getEntry(i)
+                        .getChannelName());
+                window.addShape(text);
+                window.addShape(text2);
+
+            }
         }
 
     }
