@@ -194,9 +194,6 @@ public class GUIWindow {
      *            the button pressed
      */
     public void clickedReach(Button button) {
-        if (engagementType == "Reach") {
-            return;
-        }
         engagementType = "Reach";
         if (sortType == "Engagement") {
             sortByEngagement();
