@@ -46,12 +46,12 @@ public class GUIWindow {
         this.channelList = channelList;
         window = new Window();
         length = channelList.getChannels().getLength();
-        
+
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         double width = screenSize.getWidth();
         double height = screenSize.getHeight();
 
-        window.setSize((int)(width*0.8), (int)(height*0.9));
+        window.setSize((int)(width * 0.8), (int)(height * 0.9));
         // buttons for each month
         Button jan = new Button();
         jan.setTitle("January");
@@ -105,18 +105,18 @@ public class GUIWindow {
         q1.setTitle("Quarter 1");
         q1.onClick(this, "clickedMonth");
         window.addButton(q1, WindowSide.SOUTH);
-//        Button q2 = new Button();
-//        q2.setTitle("Quarter 2");
-//        q2.onClick(this, "clickedMonth");
-//        window.addButton(q2, WindowSide.SOUTH);
-//        Button q3 = new Button();
-//        q3.setTitle("Quarter 3");
-//        q3.onClick(this, "clickedMonth");
-//        window.addButton(q3, WindowSide.SOUTH);
-//        Button q4 = new Button();
-//        q4.setTitle("Quarter 4");
-//        q4.onClick(this, "clickedMonth");
-//        window.addButton(q4, WindowSide.SOUTH);
+// Button q2 = new Button();
+// q2.setTitle("Quarter 2");
+// q2.onClick(this, "clickedMonth");
+// window.addButton(q2, WindowSide.SOUTH);
+// Button q3 = new Button();
+// q3.setTitle("Quarter 3");
+// q3.onClick(this, "clickedMonth");
+// window.addButton(q3, WindowSide.SOUTH);
+// Button q4 = new Button();
+// q4.setTitle("Quarter 4");
+// q4.onClick(this, "clickedMonth");
+// window.addButton(q4, WindowSide.SOUTH);
 
         // buttons for choosing the sort method
         Button sortEngage = new Button();
@@ -144,9 +144,12 @@ public class GUIWindow {
         chooseReach.onClick(this, "clickedReach");
         window.addButton(chooseReach, WindowSide.WEST);
 
+        TextShape t1 = new TextShape(10, 10, selectedMonth);
+        window.addShape(t1);
+
         // ==========================
-        
-        sortByEngagement();
+
+        sortByName();
     }
 
 
@@ -267,8 +270,10 @@ public class GUIWindow {
 
 
     /**
-     * should update the guys in the background, while the buttons just sort and
-     * choose what to display
+     * 
+     * Updates the shapes on the screen by re-doing the looping of ChannelList.
+     * This way the user has decided to sort will be shown.
+     * 
      */
     private void update() {
         window.removeAllShapes();
