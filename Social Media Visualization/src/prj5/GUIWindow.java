@@ -46,6 +46,8 @@ public class GUIWindow {
         window = new Window();
         length = channelList.getChannels().getLength();
 
+        
+        window.setSize(1000, 1000);
         shapes = new Shape[length];
         // buttons for each month
         Button jan = new Button();
