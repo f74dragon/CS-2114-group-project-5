@@ -42,7 +42,7 @@ public class GUIWindow {
 
         selectedMonth = "January";
         engagementType = "Traditional";
-        sortType = "Name";
+        sortType = "Engagement";
         this.channelList = channelList;
         window = new Window();
         length = channelList.getChannels().getLength();
