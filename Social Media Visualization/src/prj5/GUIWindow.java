@@ -46,8 +46,6 @@ public class GUIWindow {
         window = new Window();
         length = channelList.getChannels().getLength();
 
-        
-        window.setSize(1000, 1000);
         shapes = new Shape[length];
         // buttons for each month
         Button jan = new Button();
@@ -286,18 +284,22 @@ public class GUIWindow {
             TextShape text;
             if (engagementType == "Traditional") {
                 if (tempMonth.getTraditional() < 0) {
-                    text = new TextShape(50 + xIncrement * i, bottomPlacement + 20, "No Data");
+                    text = new TextShape(50 + xIncrement * i, bottomPlacement
+                        + 20, "No Data");
                 }
-                else{
-                    text = new TextShape(50 + xIncrement * i, bottomPlacement + 20, String.valueOf(tempMonth.getTraditional()));
+                else {
+                    text = new TextShape(50 + xIncrement * i, bottomPlacement
+                        + 20, String.valueOf(tempMonth.getTraditional()));
                 }
             }
             else {
                 if (tempMonth.getReach() < 0) {
-                    text = new TextShape(50 + xIncrement * i, bottomPlacement + 20, "No Data");
+                    text = new TextShape(50 + xIncrement * i, bottomPlacement
+                        + 20, "No Data");
                 }
-                else{
-                    text = new TextShape(50 + xIncrement * i, bottomPlacement + 20, String.valueOf(tempMonth.getReach()));
+                else {
+                    text = new TextShape(50 + xIncrement * i, bottomPlacement
+                        + 20, String.valueOf(tempMonth.getReach()));
                 }
             }
             TextShape text2 = new TextShape(50 + xIncrement * i,
