@@ -219,9 +219,6 @@ public class GUIWindow {
         if (sortType == "Engagement") {
             sortByEngagement();
         }
-        else {
-            update();
-        }
     }
 
 
@@ -236,9 +233,6 @@ public class GUIWindow {
         engagementType = "Reach";
         if (sortType == "Engagement") {
             sortByEngagement();
-        }
-        else {
-            update();
         }
     }
 
@@ -292,7 +286,6 @@ public class GUIWindow {
 //
 //
 // for (int i = 0; i < length; i++) {
-
 // shapes[i] = new Shape(((window.getWidth() / 10) + (i * 10))
 // / (length), (window.getHeight()), 50, 300, Color.black);
 

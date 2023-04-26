@@ -36,7 +36,7 @@ public class CompareByTraditional implements Comparator<Month> {
         if (m2Trad < 0) {
             m2Trad = 0.0;
         }
-        return (int)(m1Trad - m2Trad);
+        return -1 * (int)(m1Trad - m2Trad);
 
     }
 
@@ -63,13 +63,13 @@ public class CompareByTraditional implements Comparator<Month> {
             return 0;
         }
         else if ((Double)c1.getMonth(month).getTraditional() < 0) {
-            return c2.getMonth(month).getTraditional();
+            return -1 * c2.getMonth(month).getTraditional();
         }
         else if ((Double)c2.getMonth(month).getTraditional() < 0) {
-            return c1.getMonth(month).getTraditional();
+            return -1 * c1.getMonth(month).getTraditional();
         }
         else {
-            return c1.getMonth(month).getTraditional() - c2.getMonth(month)
+            return -1 * c1.getMonth(month).getTraditional() - c2.getMonth(month)
                 .getTraditional();
         }
     }
