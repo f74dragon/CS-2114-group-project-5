@@ -36,7 +36,7 @@ public class CompareByReach implements Comparator<Month> {
         if (m2Reach < 0) {
             m2Reach = 0.0;
         }
-        return (int)(m1Reach - m2Reach);
+        return -1*(int)(m1Reach - m2Reach);
 
     }
 
@@ -67,7 +67,7 @@ public class CompareByReach implements Comparator<Month> {
         if (c2Reach < 0) {
             c2Reach = 0.0;
         }
-        return c1Reach - c2Reach;
+        return -1*c1Reach - c2Reach;
     }
 
 }
