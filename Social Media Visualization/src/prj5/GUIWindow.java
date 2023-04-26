@@ -46,12 +46,12 @@ public class GUIWindow {
         this.channelList = channelList;
         window = new Window();
         length = channelList.getChannels().getLength();
-        
+
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         double width = screenSize.getWidth();
         double height = screenSize.getHeight();
 
-        window.setSize((int)(width*0.8), (int)(height*0.9));
+        window.setSize((int)(width * 0.8), (int)(height * 0.9));
         // buttons for each month
         Button jan = new Button();
         jan.setTitle("January");
@@ -66,57 +66,57 @@ public class GUIWindow {
         mar.onClick(this, "clickedMonth");
         window.addButton(mar, WindowSide.SOUTH);
         Button apr = new Button();
-//        apr.setTitle("April");
-//        apr.onClick(this, "clickedMonth");
-//        window.addButton(apr, WindowSide.SOUTH);
-//        Button may = new Button();
-//        may.setTitle("May");
-//        may.onClick(this, "clickedMonth");
-//        window.addButton(may, WindowSide.SOUTH);
-//        Button jun = new Button();
-//        jun.setTitle("June");
-//        jun.onClick(this, "clickedMonth");
-//        window.addButton(jun, WindowSide.SOUTH);
-//        Button jul = new Button();
-//        jul.setTitle("July");
-//        jul.onClick(this, "clickedMonth");
-//        window.addButton(jul, WindowSide.SOUTH);
-//        Button aug = new Button();
-//        aug.setTitle("August");
-//        aug.onClick(this, "clickedMonth");
-//        window.addButton(aug, WindowSide.SOUTH);
-//        Button sep = new Button();
-//        sep.setTitle("September");
-//        sep.onClick(this, "clickedMonth");
-//        window.addButton(sep, WindowSide.SOUTH);
-//        Button oct = new Button();
-//        oct.setTitle("October");
-//        oct.onClick(this, "clickedMonth");
-//        window.addButton(oct, WindowSide.SOUTH);
-//        Button nov = new Button();
-//        nov.setTitle("November");
-//        nov.onClick(this, "clickedMonth");
-//        window.addButton(nov, WindowSide.SOUTH);
-//        Button dec = new Button();
-//        dec.setTitle("December");
-//        dec.onClick(this, "clickedMonth");
-//        window.addButton(dec, WindowSide.SOUTH);
-//        Button q1 = new Button();
+// apr.setTitle("April");
+// apr.onClick(this, "clickedMonth");
+// window.addButton(apr, WindowSide.SOUTH);
+// Button may = new Button();
+// may.setTitle("May");
+// may.onClick(this, "clickedMonth");
+// window.addButton(may, WindowSide.SOUTH);
+// Button jun = new Button();
+// jun.setTitle("June");
+// jun.onClick(this, "clickedMonth");
+// window.addButton(jun, WindowSide.SOUTH);
+// Button jul = new Button();
+// jul.setTitle("July");
+// jul.onClick(this, "clickedMonth");
+// window.addButton(jul, WindowSide.SOUTH);
+// Button aug = new Button();
+// aug.setTitle("August");
+// aug.onClick(this, "clickedMonth");
+// window.addButton(aug, WindowSide.SOUTH);
+// Button sep = new Button();
+// sep.setTitle("September");
+// sep.onClick(this, "clickedMonth");
+// window.addButton(sep, WindowSide.SOUTH);
+// Button oct = new Button();
+// oct.setTitle("October");
+// oct.onClick(this, "clickedMonth");
+// window.addButton(oct, WindowSide.SOUTH);
+// Button nov = new Button();
+// nov.setTitle("November");
+// nov.onClick(this, "clickedMonth");
+// window.addButton(nov, WindowSide.SOUTH);
+// Button dec = new Button();
+// dec.setTitle("December");
+// dec.onClick(this, "clickedMonth");
+// window.addButton(dec, WindowSide.SOUTH);
+        Button q1 = new Button();
         q1.setTitle("Quarter 1");
         q1.onClick(this, "clickedMonth");
         window.addButton(q1, WindowSide.SOUTH);
-        Button q2 = new Button();
-//        q2.setTitle("Quarter 2");
-//        q2.onClick(this, "clickedMonth");
-//        window.addButton(q2, WindowSide.SOUTH);
-//        Button q3 = new Button();
-//        q3.setTitle("Quarter 3");
-//        q3.onClick(this, "clickedMonth");
-//        window.addButton(q3, WindowSide.SOUTH);
-//        Button q4 = new Button();
-//        q4.setTitle("Quarter 4");
-//        q4.onClick(this, "clickedMonth");
-//        window.addButton(q4, WindowSide.SOUTH);
+// Button q2 = new Button();
+// q2.setTitle("Quarter 2");
+// q2.onClick(this, "clickedMonth");
+// window.addButton(q2, WindowSide.SOUTH);
+// Button q3 = new Button();
+// q3.setTitle("Quarter 3");
+// q3.onClick(this, "clickedMonth");
+// window.addButton(q3, WindowSide.SOUTH);
+// Button q4 = new Button();
+// q4.setTitle("Quarter 4");
+// q4.onClick(this, "clickedMonth");
+// window.addButton(q4, WindowSide.SOUTH);
 
         // buttons for choosing the sort method
         Button sortEngage = new Button();
@@ -144,9 +144,12 @@ public class GUIWindow {
         chooseReach.onClick(this, "clickedReach");
         window.addButton(chooseReach, WindowSide.WEST);
 
+        TextShape t1 = new TextShape(10, 10, selectedMonth);
+        window.addShape(t1);
+
         // ==========================
-        
-        sortByEngagement();
+
+        sortByName();
     }
 
 
