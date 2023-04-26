@@ -44,7 +44,7 @@ public class GUIWindow {
         this.channelList = channelList;
         window = new Window();
         length = channelList.getChannels().getLength();
-        
+
         shapes = new Shape[length];
         // buttons for each month
         Button jan = new Button();
@@ -141,7 +141,7 @@ public class GUIWindow {
         // ==========================
         Shape xShape = new Shape(window.getWidth() / 10, (window.getHeight()
             * 2) / 3, 50, 300, Color.black);
-        
+
     }
 
 
@@ -266,27 +266,35 @@ public class GUIWindow {
      * choose what to display
      */
     private void update() {
+        window.removeAllShapes();
+        Color randomColor;
         for (int i = 0; i < length; i++) {
-            shapes[i] = new Shape(20, 40 * i, 20, 20);
+            int x = ((int)Math.random() * 255);
+            int y = ((int)Math.random() * 255);
+            int z = ((int)Math.random() * 255);
+
+            randomColor = new Color(x, y, z);
+            shapes[i] = new Shape((window.getWidth() / 10) + (i * 300), (window
+                .getHeight() * 3) / 7, 50, 300, randomColor);
             window.addShape(shapes[i]);
         }
-//        double max; // used to make the ratio of bar sizes
-//        if (engagementType == "Traditional") {
-//            if (sortType == "Name") {
-//                
-//            }
-//            else {
-//                max = channelList.getChannels().getEntry(0).getMonth(selectedMonth).getTraditional();
-//            }
-//        }
-//        else {
-//            
-//   
-      //  for (int i = 0; i < length; i++) {
-            shapes[0]= new Shape(200, 200, 50, 300, Color.black);
-//            shapes[i] = new Shape(((window.getWidth() / 10) + (i * 10))
-//                / (length), (window.getHeight()), 50, 300, Color.black); 
-        
+// double max; // used to make the ratio of bar sizes
+// if (engagementType == "Traditional") {
+// if (sortType == "Name") {
+//
+// }
+// else {
+// max =
+// channelList.getChannels().getEntry(0).getMonth(selectedMonth).getTraditional();
+// }
+// }
+// else {
+//
+//
+// for (int i = 0; i < length; i++) {
+
+// shapes[i] = new Shape(((window.getWidth() / 10) + (i * 10))
+// / (length), (window.getHeight()), 50, 300, Color.black);
 
     }
 
