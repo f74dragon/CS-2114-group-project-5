@@ -24,6 +24,17 @@ public class GUIWindow {
     private String engagementType;
     private String sortType;
 
+    /**
+     * Constructor for the GUIWindow.
+     * Creates a window that will display the contents of the channel list given
+     * Places buttons for each month and quarter on the bottom side of the
+     * window, buttons for the type of engagement on the left, buttons for
+     * sorting by name or engagement rate on the top and finally a quit button
+     * to exit the program.
+     * 
+     * @param channelList
+     *            the list of channels to display
+     */
     public GUIWindow(ChannelList channelList) {
         selectedMonth = "January";
         engagementType = "Traditional";
