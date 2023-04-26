@@ -52,7 +52,6 @@ public class GUIWindow {
         double height = screenSize.getHeight();
 
         window.setSize((int)(width*0.8), (int)(height*0.9));
-        shapes = new Shape[length];
         // buttons for each month
         Button jan = new Button();
         jan.setTitle("January");
