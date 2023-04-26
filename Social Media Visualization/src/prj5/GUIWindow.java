@@ -101,11 +101,11 @@ public class GUIWindow {
 //        dec.setTitle("December");
 //        dec.onClick(this, "clickedMonth");
 //        window.addButton(dec, WindowSide.SOUTH);
-//        Button q1 = new Button();
+        Button q1 = new Button();
         q1.setTitle("Quarter 1");
         q1.onClick(this, "clickedMonth");
         window.addButton(q1, WindowSide.SOUTH);
-        Button q2 = new Button();
+//        Button q2 = new Button();
 //        q2.setTitle("Quarter 2");
 //        q2.onClick(this, "clickedMonth");
 //        window.addButton(q2, WindowSide.SOUTH);
@@ -272,52 +272,103 @@ public class GUIWindow {
      */
     private void update() {
         window.removeAllShapes();
-        for (int i = 0; i < length; i++) {
-            Month tempMonth = channelList.getChannels().getEntry(i).getMonth(
-                selectedMonth);
-            int xIncrement = (window.getWidth() / (1 + length));
-            Color color = new Color((int)(Math.random() * 255), (int)(Math
-                .random() * 255), (int)(Math.random() * 255));
-            int height = 0;
-            if (engagementType == "Traditional") {
-                height = (int)tempMonth.getTraditional() * 5;
-            }
-            else {
-                height = (int)tempMonth.getReach() * 5;
-            }
-            int width = 50;
-            int bottomPlacement = window.getHeight() * 2 / 3;
-            Shape tempShape = new Shape(50 + xIncrement * i, bottomPlacement
-                - height, width, height, color);
-            window.addShape(tempShape);
-
-            TextShape text;
-            if (engagementType == "Traditional") {
-                if (tempMonth.getTraditional() < 0) {
-                    text = new TextShape(50 + xIncrement * i, bottomPlacement
-                        + 20, "No Data");
+        if (sortType == "Name") {
+            for (int i = 0; i < length; i++) {
+                Month tempMonth = channelList.getChannels().getEntry(i).getMonth(
+                    selectedMonth);
+                int xIncrement = (window.getWidth() / (1 + length));
+                Color color = new Color((int)(Math.random() * 255), (int)(Math
+                    .random() * 255), (int)(Math.random() * 255));
+                int height = 0;
+                if (engagementType == "Traditional") {
+                    height = (int)tempMonth.getTraditional() * 5;
                 }
                 else {
-                    text = new TextShape(50 + xIncrement * i, bottomPlacement
-                        + 20, String.valueOf(tempMonth.getTraditional()));
+                    height = (int)tempMonth.getReach() * 5;
                 }
-            }
-            else {
-                if (tempMonth.getReach() < 0) {
-                    text = new TextShape(50 + xIncrement * i, bottomPlacement
-                        + 20, "No Data");
+                int width = 50;
+                int bottomPlacement = window.getHeight() * 2 / 3;
+                Shape tempShape = new Shape(50 + xIncrement * i, bottomPlacement
+                    - height, width, height, color);
+                window.addShape(tempShape);
+    
+                TextShape text;
+                if (engagementType == "Traditional") {
+                    if (tempMonth.getTraditional() < 0) {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, "No Data");
+                    }
+                    else {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, String.valueOf(tempMonth.getTraditional()));
+                    }
                 }
                 else {
-                    text = new TextShape(50 + xIncrement * i, bottomPlacement
-                        + 20, String.valueOf(tempMonth.getReach()));
+                    if (tempMonth.getReach() < 0) {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, "No Data");
+                    }
+                    else {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, String.valueOf(tempMonth.getReach()));
+                    }
                 }
+                TextShape text2 = new TextShape(50 + xIncrement * i,
+                    bottomPlacement, channelList.getChannels().getEntry(i)
+                        .getChannelName());
+                window.addShape(text);
+                window.addShape(text2);
+    
             }
-            TextShape text2 = new TextShape(50 + xIncrement * i,
-                bottomPlacement, channelList.getChannels().getEntry(i)
-                    .getChannelName());
-            window.addShape(text);
-            window.addShape(text2);
+        }
+        else {
+            for (int i = 0; i < length; i++) {
+                Month tempMonth = channelList.getChannels().getEntry((length - 1) - i).getMonth(
+                    selectedMonth);
+                int xIncrement = (window.getWidth() / (1 + length));
+                Color color = new Color((int)(Math.random() * 255), (int)(Math
+                    .random() * 255), (int)(Math.random() * 255));
+                int height = 0;
+                if (engagementType == "Traditional") {
+                    height = (int)tempMonth.getTraditional() * 5;
+                }
+                else {
+                    height = (int)tempMonth.getReach() * 5;
+                }
+                int width = 50;
+                int bottomPlacement = window.getHeight() * 2 / 3;
+                Shape tempShape = new Shape(50 + xIncrement * i, bottomPlacement
+                    - height, width, height, color);
+                window.addShape(tempShape);
 
+                TextShape text;
+                if (engagementType == "Traditional") {
+                    if (tempMonth.getTraditional() < 0) {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, "No Data");
+                    }
+                    else {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, String.valueOf(tempMonth.getTraditional()));
+                    }
+                }
+                else {
+                    if (tempMonth.getReach() < 0) {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, "No Data");
+                    }
+                    else {
+                        text = new TextShape(50 + xIncrement * i, bottomPlacement
+                            + 20, String.valueOf(tempMonth.getReach()));
+                    }
+                }
+                TextShape text2 = new TextShape(50 + xIncrement * i,
+                    bottomPlacement, channelList.getChannels().getEntry(i)
+                        .getChannelName());
+                window.addShape(text);
+                window.addShape(text2);
+
+            }
         }
 
     }
