@@ -96,7 +96,7 @@ public class GUIWindow {
         window.addButton(q1, WindowSide.SOUTH);
         Button q2 = new Button();
         q2.setTitle("Quarter 2");
-        q1.onClick(this, "clickedMonth");
+        q2.onClick(this, "clickedMonth");
         window.addButton(q2, WindowSide.SOUTH);
         Button q3 = new Button();
         q3.setTitle("Quarter 3");
