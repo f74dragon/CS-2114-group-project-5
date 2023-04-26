@@ -249,6 +249,9 @@ public class GUIWindow {
      *            the button pressed
      */
     public void clickedReach(Button button) {
+        if (engagementType == "Reach") {
+            return;
+        }
         engagementType = "Reach";
         reach = true;
         trad = false;
@@ -287,7 +290,18 @@ public class GUIWindow {
      */
     private void update() {
         window.removeAllShapes();
+<<<<<<< Updated upstream
         if (sortType.equals("Name")) {
+=======
+        Shape monthStr = new TextShape(50, window.getHeight() - 210, selectedMonth, Color.BLUE, 15);
+        Shape engagementTypeStr = new TextShape(50, window.getHeight() - 180, engagementType, Color.BLUE, 15);
+        Shape sortStr = new TextShape(50, window.getHeight() - 150, "Sorting by " + sortType, Color.BLUE, 15);
+        window.addShape(monthStr);
+        window.addShape(engagementTypeStr);
+        window.addShape(sortStr);
+        
+        if (sortType == "Name") {
+>>>>>>> Stashed changes
             for (int i = 0; i < length; i++) {
                 Month tempMonth = channelList.getChannels().getEntry(i)
                     .getMonth(selectedMonth);
