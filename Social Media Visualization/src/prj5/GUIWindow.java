@@ -18,7 +18,6 @@ import cs2.WindowSide;
  */
 public class GUIWindow {
 
-    private Shape[] shapes;
     private int length;
     private Window window;
     private ChannelList channelList;
@@ -48,7 +47,6 @@ public class GUIWindow {
 
         
         window.setSize(1000, 1000);
-        shapes = new Shape[length];
         // buttons for each month
         Button jan = new Button();
         jan.setTitle("January");
@@ -197,6 +195,7 @@ public class GUIWindow {
      * and then updates the GUI
      */
     private void sortByEngagement() {
+        System.out.println(channelList.getChannels().toString());
         if (engagementType == "Traditional") {
             CompareByTraditional comp = new CompareByTraditional();
             channelList.sort(comp, selectedMonth);
@@ -205,6 +204,7 @@ public class GUIWindow {
             CompareByReach comp = new CompareByReach();
             channelList.sort(comp, selectedMonth);
         }
+        System.out.println(channelList.getChannels().toString());
         update();
     }
 
@@ -222,6 +222,9 @@ public class GUIWindow {
         if (sortType == "Engagement") {
             sortByEngagement();
         }
+        else {
+            update();
+        }
     }
 
 
@@ -236,6 +239,9 @@ public class GUIWindow {
         engagementType = "Reach";
         if (sortType == "Engagement") {
             sortByEngagement();
+        }
+        else {
+            update();
         }
     }
 
