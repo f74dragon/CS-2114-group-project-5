@@ -3,6 +3,7 @@ package prj5;
 import java.awt.Color;
 import cs2.Button;
 import cs2.Shape;
+import cs2.TextShape;
 import cs2.Window;
 import cs2.WindowSide;
 
@@ -261,33 +262,40 @@ public class GUIWindow {
      */
     private void update() {
         window.removeAllShapes();
-        Color randomColor;
         for (int i = 0; i < length; i++) {
-            int x = ((int)Math.random() * 255);
-            int y = ((int)Math.random() * 255);
-            int z = ((int)Math.random() * 255);
+            Month tempMonth = channelList.getChannels().getEntry(i).getMonth(
+                selectedMonth);
+            int xIncrement = (window.getWidth() / (1 + length));
+            Color color = new Color((int)(Math.random() * 255), (int)(Math
+                .random() * 255), (int)(Math.random() * 255));
+            int height = 0;
+            if (engagementType == "Traditional") {
+                height = (int)tempMonth.getTraditional() * 5;
+            }
+            else {
+                height = (int)tempMonth.getReach() * 5;
+            }
+            int width = 50;
+            int bottomPlacement = window.getHeight() * 2 / 3;
+            Shape tempShape = new Shape(50 + xIncrement * i, bottomPlacement
+                - height, width, height, color);
+            window.addShape(tempShape);
 
-            randomColor = new Color(x, y, z);
-            shapes[i] = new Shape((window.getWidth() / 10) + (i * 300), (window
-                .getHeight() * 3) / 7, 50, 300, randomColor);
-            window.addShape(shapes[i]);
+            TextShape text;
+            if (engagementType == "Traditional") {
+                text = new TextShape(50 + xIncrement * i, bottomPlacement + 20, String.valueOf(tempMonth.getTraditional()));
+            }
+            else {
+                text = new TextShape(50 + xIncrement * i, bottomPlacement + 20, String.valueOf(tempMonth.getReach()));
+                
+            }
+            TextShape text2 = new TextShape(50 + xIncrement * i,
+                bottomPlacement, channelList.getChannels().getEntry(i)
+                    .getChannelName());
+            window.addShape(text);
+            window.addShape(text2);
+
         }
-// double max; // used to make the ratio of bar sizes
-// if (engagementType == "Traditional") {
-// if (sortType == "Name") {
-//
-// }
-// else {
-// max =
-// channelList.getChannels().getEntry(0).getMonth(selectedMonth).getTraditional();
-// }
-// }
-// else {
-//
-//
-// for (int i = 0; i < length; i++) {
-// shapes[i] = new Shape(((window.getWidth() / 10) + (i * 10))
-// / (length), (window.getHeight()), 50, 300, Color.black);
 
     }
 
