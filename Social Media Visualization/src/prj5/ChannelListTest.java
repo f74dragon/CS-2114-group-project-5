@@ -22,7 +22,7 @@ public class ChannelListTest extends TestCase {
      */
     public void setUp() throws FileNotFoundException {
         channelList = new ChannelList("SampleInput1_2022.csv");
-        channelList2 = new ChannelList("SampleInput2_2022.csv");
+        channelList2 = new ChannelList("SampleInput1_2022.csv");
     }
 
 
@@ -51,7 +51,10 @@ public class ChannelListTest extends TestCase {
         assertEquals("australian_wildlife\r\n" + "ArtAllDay\r\n"
             + "wizardHighSchool\r\n" + "JustBeatz\r\n", channelList.toString());
 
-        channelList.sort(new CompareByReach(), "January");
+        channelList2.sort(new CompareByReach(), "January");
+        assertEquals("australian_wildlife\r\n" + "ArtAllDay\r\n"
+            + "wizardHighSchool\r\n" + "JustBeatz\r\n", channelList2
+                .toString());
 
         channelList.sort(new CompareByReach(), "January");
         assertEquals("australian_wildlife\r\n" + "ArtAllDay\r\n"
