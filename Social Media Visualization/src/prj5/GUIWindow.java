@@ -300,6 +300,9 @@ public class GUIWindow {
                 else {
                     height = (int)tempMonth.getReach() * 5;
                 }
+                if (height > window.getHeight()*2/3) {
+                    height = window.getHeight();
+                }
                 int width = 50;
                 int bottomPlacement = window.getHeight() * 2 / 3;
                 Shape tempShape = new Shape(50 + xIncrement * i, bottomPlacement
