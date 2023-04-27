@@ -14,6 +14,7 @@ public class ChannelListTest extends TestCase {
 
     private ChannelList channelList;
     private ChannelList channelList2;
+    private ChannelList channelList3;
 
     /**
      * sets up the testing environment
@@ -23,6 +24,7 @@ public class ChannelListTest extends TestCase {
     public void setUp() throws FileNotFoundException {
         channelList = new ChannelList("SampleInput1_2022.csv");
         channelList2 = new ChannelList("SampleInput1_2022.csv");
+        channelList3 = new ChannelList("SampleInput3_2022.csv");
     }
 
 
