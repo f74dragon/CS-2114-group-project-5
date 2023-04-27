@@ -148,9 +148,9 @@ public class ChannelList {
         while (temp != null) {
 
             Node temp2 = temp;
-            while (temp2 != null && temp2.getData() != null && temp2.getPrev()
-                .getData() != null && comp.compare((Channel)temp2.getPrev()
-                    .getData(), (Channel)temp2.getData(), month) > 0) {
+            while (temp2.getData() != null && temp2.getPrev().getData() != null
+                && comp.compare((Channel)temp2.getPrev().getData(),
+                    (Channel)temp2.getData(), month) > 0) {
                 Channel data = (Channel)temp2.getData();
                 temp2.setData(temp2.getPrev().getData());
                 temp2.getPrev().setData(data);
@@ -176,9 +176,9 @@ public class ChannelList {
         Node temp = channels.getFirstNode().getNext();
         while (temp != null) {
             Node temp2 = temp;
-            while (temp2 != null && temp2.getData() != null && temp2.getPrev()
-                .getData() != null && comp.compare((Channel)temp2.getPrev()
-                    .getData(), (Channel)temp2.getData(), month) > 0) {
+            while (temp2.getData() != null && temp2.getPrev().getData() != null
+                && comp.compare((Channel)temp2.getPrev().getData(),
+                    (Channel)temp2.getData(), month) > 0) {
                 Channel data = (Channel)temp2.getData();
                 temp2.setData(temp2.getPrev().getData());
                 temp2.getPrev().setData(data);
