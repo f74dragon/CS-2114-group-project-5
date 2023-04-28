@@ -12,15 +12,15 @@ import java.io.FileNotFoundException;
  */
 public class Input {
     public static void main(String[] args) throws FileNotFoundException {
-        ChannelList channelList;
+        InputReader channelList;
         if (args.length == 0) {
 
-            channelList = new ChannelList("SampleInput2_2022.csv");
+            channelList = new InputReader("SampleInput4_2022.csv");
 
         }
         else {
 
-            channelList = new ChannelList(args[0]);
+            channelList = new InputReader(args[0]);
             channelList.toString();
         }
         new GUIWindow(channelList);

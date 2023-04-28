@@ -12,7 +12,7 @@ import prj5.DoublyLinkedList.Node;
  *         Xiong (kevxemail)
  * @version 04-18-2023
  */
-public class ChannelList {
+public class InputReader {
 
     private DoublyLinkedList<Channel> channels;
 
@@ -24,7 +24,7 @@ public class ChannelList {
      *            the name of the file to read
      * @throws FileNotFoundException
      */
-    public ChannelList(String fileName) throws FileNotFoundException {
+    public InputReader(String fileName) throws FileNotFoundException {
         channels = new DoublyLinkedList<Channel>();
         // set up file i/o
         Scanner file = new Scanner(new File(fileName));

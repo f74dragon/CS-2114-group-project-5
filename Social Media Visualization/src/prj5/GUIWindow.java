@@ -22,7 +22,7 @@ public class GUIWindow {
 
     private int length;
     private Window window;
-    private ChannelList channelList;
+    private InputReader channelList;
     private String selectedMonth;
     private String engagementType;
     private String sortType;
@@ -38,7 +38,7 @@ public class GUIWindow {
      * @param channelList
      *            the list of channels to display
      */
-    public GUIWindow(ChannelList channelList) {
+    public GUIWindow(InputReader channelList) {
 
         selectedMonth = "January";
         engagementType = "Traditional";
